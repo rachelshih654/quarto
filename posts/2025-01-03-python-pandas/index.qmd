@@ -1,0 +1,318 @@
+---
+title: "Pandas 常用語法整理"
+description: "整理 Python Pandas 常用的資料處理語法，包含讀取資料、基本操作、資料清理等"
+date: "2025-01-03"
+categories: [Python, Pandas, Data Analysis]
+image: "/assets/images/pandas.png"
+---
+
+## 常用排行
+```{python}
+#| echo: false
+import pandas as pd
+
+# 先建立基本資料
+data = [
+    ["df['column_name']", "選取單一欄位", "⭐⭐⭐⭐⭐"],
+    ["df.head()", "查看前幾筆資料", "⭐⭐⭐⭐⭐"],
+    ["pd.read_csv()", "讀取 CSV 檔案", "⭐⭐⭐⭐⭐"],
+    ["df.info()", "查看資料基本資訊", "⭐⭐⭐⭐"],
+    ["df.describe()", "查看數值統計摘要", "⭐⭐⭐⭐"],
+    ["df.groupby()", "群組運算", "⭐⭐⭐⭐"],
+    ["df.merge()", "合併資料表", "⭐⭐⭐⭐"],
+    ["df.fillna()", "填補缺失值", "⭐⭐⭐"],
+    ["df.sort_values()", "排序資料", "⭐⭐⭐"],
+    ["df.drop_duplicates()", "刪除重複值", "⭐⭐⭐"],
+    ["df.to_csv()", "匯出 CSV", "⭐⭐⭐"],
+    ["pd.pivot_table()", "建立樞紐分析表", "⭐⭐"],
+    ["df.astype()", "轉換資料型態", "⭐⭐"],
+    ["df.resample()", "重新取樣時間序列", "⭐⭐"],
+    ["df.str.contains()", "字串包含判斷", "⭐⭐"]
+]
+
+df_codes = pd.DataFrame(data, columns=["Code", "Description", "Rating"])
+
+# 加入連結
+links = {
+    "df['column_name']": "資料選取與過濾",
+    "df.head()": "基本資料查看",
+    "pd.read_csv()": "讀取資料",
+    "df.info()": "基本資料查看",
+    "df.describe()": "基本資料查看",
+    "df.groupby()": "資料運算與統計",
+    "df.merge()": "資料合併",
+    "df.fillna()": "資料處理與清理",
+    "df.sort_values()": "資料運算與統計",
+    "df.drop_duplicates()": "資料處理與清理",
+    "df.to_csv()": "資料匯出",
+    "pd.pivot_table()": "樞紐表",
+    "df.astype()": "資料處理與清理",
+    "df.resample()": "時間序列處理",
+    "df.str.contains()": "字串處理"
+}
+
+# 將 Code 欄位轉換成帶有連結的 HTML
+df_codes['Code'] = df_codes['Code'].apply(lambda x: f'<a href="#{links[x]}">{x}</a>')
+
+# 顯示表格，允許 HTML
+df_codes.style.format({'Code': lambda x: x}).set_properties(**{'text-align': 'left'})    
+```
+
+## 讀取資料
+
+```python
+import pandas as pd
+
+# 讀取 CSV 檔案
+df = pd.read_csv('data.csv', encoding='utf-8', sep=',', header=0, index_col=None, usecols=None, nrows=None)
+'''
+常用參數：
+- encoding: 'utf-8', 'big5' 等編碼方式
+- sep: 分隔符號，預設為 ','
+- header: 標題列位置，預設為 0
+- index_col: 指定索引欄位
+- usecols: 指定要讀取的欄位
+- nrows: 指定要讀取的列數
+'''
+
+# 讀取 Excel 檔案
+df = pd.read_excel('data.xlsx')
+'''
+常用參數：
+- sheet_name: 工作表名稱或索引
+- header: 標題列位置
+- usecols: 指定要讀取的欄位
+- skiprows: 跳過指定列數
+'''
+
+# 讀取 JSON 檔案
+df = pd.read_json('data.json')
+'''
+常用參數：
+- orient: 資料格式，如 'records', 'split', 'index'
+- lines: 是否每行一筆資料
+- encoding: 編碼方式
+'''
+```
+
+
+
+## 基本資料查看
+
+```python
+# 查看前幾筆資料
+df.head()  # n: 要顯示的筆數，預設為 5
+
+# 查看資料基本資訊
+df.info()
+'''
+常用參數：
+- verbose: 是否顯示完整資訊
+- show_counts: 是否顯示非空值計數
+- memory_usage: 是否顯示記憶體使用量
+'''
+
+# 查看數值欄位的統計摘要
+df.describe()
+'''
+常用參數：
+- include: 要包含的資料類型，如 ['object'], [np.number]
+- percentiles: 要計算的百分位數
+'''
+```
+
+## 資料選取與過濾
+
+```python
+# 選取單一欄位
+df['column_name']
+
+# 選取多個欄位
+df[['column1', 'column2']]
+
+# 條件過濾
+df[df['age'] > 25]
+
+# 多重條件過濾
+df[(df['age'] > 25) & (df['salary'] > 50000)]
+
+# 使用 iloc 依照位置選取
+df.iloc[0:5, 0:2]  # 選取前5列，前2欄
+
+# 使用 loc 依照標籤選取
+df.loc['row_label', 'column_label']
+'''
+loc 常用用法：
+- df.loc[row_indexer, column_indexer]
+- df.loc['row_label']  # 選取單一列
+- df.loc[:, 'column_label']  # 選取單一欄
+- df.loc['start':'end']  # 選取範圍
+'''
+```
+
+## 資料處理與清理
+
+```python
+# 處理缺失值
+df.isna()  # 檢查缺失值
+df.fillna(0)  # 填補缺失值
+df.dropna()  # 刪除含有缺失值的列
+'''
+常用參數：
+- axis: 0 刪除列, 1 刪除欄
+- how: 'any' 任一缺失則刪除, 'all' 全部缺失才刪除
+- subset: 指定要檢查的欄位
+'''
+
+# 重複值處理
+df.duplicated()  # 檢查重複值
+df.drop_duplicates()  # 刪除重複列
+
+# 重新命名欄位
+df.rename(columns={'old_name': 'new_name'})
+
+# 資料型態轉換
+df['column'].astype('int64')
+'''
+常用型態：
+- int64, float64: 數值型態
+- str, object: 字串型態
+- datetime64: 時間型態
+- category: 類別型態
+'''
+```
+
+## 資料運算與統計
+
+```python
+# 基本統計
+df['column'].mean()  # 平均值
+df['column'].median()  # 中位數
+df['column'].mode()  # 眾數
+df['column'].std()  # 標準差
+
+# 群組運算
+df.groupby('category')['value'].mean()
+'''
+常用參數：
+- by: 分組依據，可使用多個欄位
+- as_index: 是否將分組欄位作為索引
+- observed: 是否只使用觀察到的類別
+'''
+
+# 排序
+df.sort_values('column', ascending=False)
+'''
+常用參數：
+- by: 排序依據，可使用多個欄位
+- ascending: True 升序, False 降序
+- na_position: 'first' 或 'last'
+- inplace: 是否直接修改原資料
+'''
+```
+
+## 資料合併
+
+```python
+# 合併兩個 DataFrame
+pd.concat([df1, df2])  # 垂直合併
+pd.concat([df1, df2], axis=1)  # 水平合併
+
+# 使用 merge 合併
+pd.merge(df1, df2, on='key_column')
+'''
+常用參數：
+- how: 'inner', 'outer', 'left', 'right' 合併方式
+- on: 合併依據的欄位
+- left_on/right_on: 左右資料表合併依據的欄位
+- suffixes: 重複欄位的後綴
+'''
+
+# 垂直合併
+pd.concat([df1, df2])
+'''
+常用參數：
+- axis: 0 垂直合併, 1 水平合併
+- ignore_index: 是否重新產生索引
+- join: 'inner' 或 'outer' 合併方式
+'''
+```
+
+## 資料匯出
+
+```python
+# 匯出成不同格式
+df.to_csv('output.csv', index=False)
+df.to_excel('output.xlsx')
+df.to_json('output.json')
+```
+
+## 樞紐表
+
+```python       
+# 樞紐表
+pd.pivot_table(df, 
+    values='value', 
+    index='category1',
+    columns='category2', 
+    aggfunc='mean'
+)
+'''
+常用參數：
+- values: 要計算的欄位
+- index: 列索引
+- columns: 欄索引
+- aggfunc: 計算方式，如 'mean', 'sum', 'count'
+- fill_value: 缺失值填補值
+- margins: 是否顯示總計
+'''
+```
+
+## 時間序列處理
+
+```python
+# 時間序列處理
+df['date'] = pd.to_datetime(df['date'])
+'''
+常用參數：
+- format: 時間格式，如 '%Y-%m-%d'
+- errors: 'raise', 'coerce', 'ignore'
+'''
+
+df.set_index('date', inplace=True)
+df.resample('M').mean()
+'''
+常用參數：
+- rule: 重新取樣頻率
+  - 'D': 日
+  - 'W': 週
+  - 'M': 月
+  - 'Q': 季
+  - 'Y': 年
+- on: 依據的時間欄位
+- closed: 區間閉合方式
+'''
+```
+
+## 字串處理
+
+```python
+# 字串處理
+df['text'].str.contains('pattern')
+'''
+常用參數：
+- pat: 要搜尋的模式
+- case: 是否區分大小寫
+- regex: 是否使用正則表達式
+- na: 缺失值的處理方式
+'''
+
+df['text'].str.replace('old', 'new')
+'''
+常用參數：
+- pat: 要替換的模式
+- repl: 替換後的字串
+- regex: 是否使用正則表達式
+- n: 替換次數
+'''
+```

@@ -1,0 +1,77 @@
+project:
+  type: website
+  output-dir: _output
+
+website:
+  title: "SHIH"
+  description: "A data science blog and portfolio by Rachel SHIH"
+  # favicon: /assets/images/logo.svg
+  # image: /assets/images/social-profile.png
+  site-url: ''
+  repo-url: ''
+  repo-actions: [edit, issue]
+  open-graph: true
+  twitter-card: true
+  page-navigation: true
+  back-to-top-navigation: true
+  page-footer:
+    border: true
+    left: |
+      Powered by [Quarto](https://quarto.org).
+    right: |
+      &copy; []{#current-year} Rachel SHIH. 
+  navbar:
+    title: "SHIH"
+    search: true
+    # logo: assets/images/logo.svg
+    right:
+      - text: About
+        href: index.qmd
+      - text: Blog
+        href: blog.qmd
+      - text: Projects
+        href: projects.qmd
+
+
+format:
+  html:
+    theme:
+      - assets/stylesheets/coeos.scss
+      - assets/stylesheets/projects.scss
+    lang: en
+    date-format: 'dddd[, the] Do [of] MMMM, YYYY'
+    highlight-style: github-dark
+    code-copy: true
+    code-link: true
+    anchor-sections: true
+    email-obfuscation: javascript
+    link-external-newwindow: true
+    fig-align: center
+    code-tools:
+      source: false
+      toggle: false
+      caption: none
+    include-after-body:
+      - text: |
+          <script type="text/javascript">
+            const dateElements = document.querySelectorAll("p.date, div.listing-date, div.listing-file-modified");
+            dateElements.forEach((el) => {
+              el.innerHTML = el.innerHTML.replace(
+                /(\d+)(st|nd|rd|th)/g,
+                "$1<sup style='font-size:0.5em;font-style:italic;'>$2</sup>"
+              );
+            });
+          </script>
+          <script>
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+          </script>
+
+lightbox: auto
+
+# Execute/執行設定
+execute:
+    eval: true  # 是否評估代碼
+    echo: true  # 是否顯示代碼
+    output: true  # 是否顯示輸出結果
+    warning: false  # 是否顯示警告
+    error: false  # 是否顯示錯誤

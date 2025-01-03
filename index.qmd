@@ -1,0 +1,39 @@
+---
+title: "Rachel SHIH"
+subtitle: |
+  data scientist.
+# image: /assets/images/social-profile.png
+about:
+  id: edu-exp
+  template: solana
+  image-width: 9em
+  image-shape: round
+---
+
+::: {#edu-exp}
+:::
+
+我是一名數據分析師，專注於數據分析、數據可視化、多組學數據分析、長期追蹤數據分析、知識分享、學習新技能。
+
+:::: {.grid}
+
+::: {.g-col-12 .g-col-md-8 style="text-align: left;"}
+## Education
+
+- **_M.Sc._ in Statistics** , **2023**  
+  *National Taipei University, Taiwan*
+
+- **_B.Sc._ in Mathematics** , **2018**  
+  *Fu Jen Catholic University*
+:::
+
+::: {.g-col-12 .g-col-md-4 style="text-align: left;"}
+## Interests
+
+- Data Analysis
+- Data Visualisation
+- Knowledge Sharing
+- Learning New Skills
+:::
+
+::::

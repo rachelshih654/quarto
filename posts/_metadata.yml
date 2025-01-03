@@ -1,0 +1,19 @@
+# options specified here will apply to all posts in this folder
+
+# freeze computational output
+# (see https://quarto.org/docs/projects/code-execution.html#freeze)
+freeze: true
+
+# Enable banner style title blocks
+title-block-banner: true
+
+author: Rachel SHIH
+
+toc: true  # 目錄
+number-sections: true  # 編號章節
+back-to-top-navigation: true  # 返回頂部導航
+
+knitr:
+  opts_chunk:
+    collapse: true  # 折疊選項
+    comment: "#>"  # 註解符號
