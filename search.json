@@ -1,0 +1,121 @@
+[
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Pandas 常用語法整理\n\n\n\n\n\n\nPython\n\n\nPandas\n\n\nData Analysis\n\n\n\n整理 Python Pandas 常用的資料處理語法，包含讀取資料、基本操作、資料清理等\n\n\n\n\n\nFriday, the 3rd of January, 2025\n\n\nRachel SHIH\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Rachel SHIH",
+    "section": "",
+    "text": "我是一名數據分析師，專注於數據分析、數據可視化、多組學數據分析、長期追蹤數據分析、知識分享、學習新技能。"
+  },
+  {
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "Rachel SHIH",
+    "section": "Education",
+    "text": "Education\n\nM.Sc. in Statistics , 2023\nNational Taipei University, Taiwan\nB.Sc. in Mathematics , 2018\nFu Jen Catholic University"
+  },
+  {
+    "objectID": "index.html#interests",
+    "href": "index.html#interests",
+    "title": "Rachel SHIH",
+    "section": "Interests",
+    "text": "Interests\n\nData Analysis\nData Visualisation\nKnowledge Sharing\nLearning New Skills"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog",
+    "section": "",
+    "text": "Pandas 常用語法整理\n\n\n\n\n\n\nPython\n\n\nPandas\n\n\nData Analysis\n\n\n\n整理 Python Pandas 常用的資料處理語法，包含讀取資料、基本操作、資料清理等\n\n\n\n\n\nFriday, the 3rd of January, 2025\n\n\nRachel SHIH\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+  },
+  {
+    "objectID": "posts/2025-01-03-python-pandas/index.html",
+    "href": "posts/2025-01-03-python-pandas/index.html",
+    "title": "Pandas 常用語法整理",
+    "section": "",
+    "text": "Code\nDescription\nRating\n\n\n\n\n0\ndf['column_name']\n選取單一欄位\n⭐⭐⭐⭐⭐\n\n\n1\ndf.head()\n查看前幾筆資料\n⭐⭐⭐⭐⭐\n\n\n2\npd.read_csv()\n讀取 CSV 檔案\n⭐⭐⭐⭐⭐\n\n\n3\ndf.info()\n查看資料基本資訊\n⭐⭐⭐⭐\n\n\n4\ndf.describe()\n查看數值統計摘要\n⭐⭐⭐⭐\n\n\n5\ndf.groupby()\n群組運算\n⭐⭐⭐⭐\n\n\n6\ndf.merge()\n合併資料表\n⭐⭐⭐⭐\n\n\n7\ndf.fillna()\n填補缺失值\n⭐⭐⭐\n\n\n8\ndf.sort_values()\n排序資料\n⭐⭐⭐\n\n\n9\ndf.drop_duplicates()\n刪除重複值\n⭐⭐⭐\n\n\n10\ndf.to_csv()\n匯出 CSV\n⭐⭐⭐\n\n\n11\npd.pivot_table()\n建立樞紐分析表\n⭐⭐\n\n\n12\ndf.astype()\n轉換資料型態\n⭐⭐\n\n\n13\ndf.resample()\n重新取樣時間序列\n⭐⭐\n\n\n14\ndf.str.contains()\n字串包含判斷\n⭐⭐"
+  },
+  {
+    "objectID": "posts/2025-01-03-python-pandas/index.html#常用排行",
+    "href": "posts/2025-01-03-python-pandas/index.html#常用排行",
+    "title": "Pandas 常用語法整理",
+    "section": "",
+    "text": "Code\nDescription\nRating\n\n\n\n\n0\ndf['column_name']\n選取單一欄位\n⭐⭐⭐⭐⭐\n\n\n1\ndf.head()\n查看前幾筆資料\n⭐⭐⭐⭐⭐\n\n\n2\npd.read_csv()\n讀取 CSV 檔案\n⭐⭐⭐⭐⭐\n\n\n3\ndf.info()\n查看資料基本資訊\n⭐⭐⭐⭐\n\n\n4\ndf.describe()\n查看數值統計摘要\n⭐⭐⭐⭐\n\n\n5\ndf.groupby()\n群組運算\n⭐⭐⭐⭐\n\n\n6\ndf.merge()\n合併資料表\n⭐⭐⭐⭐\n\n\n7\ndf.fillna()\n填補缺失值\n⭐⭐⭐\n\n\n8\ndf.sort_values()\n排序資料\n⭐⭐⭐\n\n\n9\ndf.drop_duplicates()\n刪除重複值\n⭐⭐⭐\n\n\n10\ndf.to_csv()\n匯出 CSV\n⭐⭐⭐\n\n\n11\npd.pivot_table()\n建立樞紐分析表\n⭐⭐\n\n\n12\ndf.astype()\n轉換資料型態\n⭐⭐\n\n\n13\ndf.resample()\n重新取樣時間序列\n⭐⭐\n\n\n14\ndf.str.contains()\n字串包含判斷\n⭐⭐"
+  },
+  {
+    "objectID": "posts/2025-01-03-python-pandas/index.html#讀取資料",
+    "href": "posts/2025-01-03-python-pandas/index.html#讀取資料",
+    "title": "Pandas 常用語法整理",
+    "section": "2 讀取資料",
+    "text": "2 讀取資料\nimport pandas as pd\n\n# 讀取 CSV 檔案\ndf = pd.read_csv('data.csv', encoding='utf-8', sep=',', header=0, index_col=None, usecols=None, nrows=None)\n'''\n常用參數：\n- encoding: 'utf-8', 'big5' 等編碼方式\n- sep: 分隔符號，預設為 ','\n- header: 標題列位置，預設為 0\n- index_col: 指定索引欄位\n- usecols: 指定要讀取的欄位\n- nrows: 指定要讀取的列數\n'''\n\n# 讀取 Excel 檔案\ndf = pd.read_excel('data.xlsx')\n'''\n常用參數：\n- sheet_name: 工作表名稱或索引\n- header: 標題列位置\n- usecols: 指定要讀取的欄位\n- skiprows: 跳過指定列數\n'''\n\n# 讀取 JSON 檔案\ndf = pd.read_json('data.json')\n'''\n常用參數：\n- orient: 資料格式，如 'records', 'split', 'index'\n- lines: 是否每行一筆資料\n- encoding: 編碼方式\n'''"
+  },
+  {
+    "objectID": "posts/2025-01-03-python-pandas/index.html#基本資料查看",
+    "href": "posts/2025-01-03-python-pandas/index.html#基本資料查看",
+    "title": "Pandas 常用語法整理",
+    "section": "3 基本資料查看",
+    "text": "3 基本資料查看\n# 查看前幾筆資料\ndf.head()  # n: 要顯示的筆數，預設為 5\n\n# 查看資料基本資訊\ndf.info()\n'''\n常用參數：\n- verbose: 是否顯示完整資訊\n- show_counts: 是否顯示非空值計數\n- memory_usage: 是否顯示記憶體使用量\n'''\n\n# 查看數值欄位的統計摘要\ndf.describe()\n'''\n常用參數：\n- include: 要包含的資料類型，如 ['object'], [np.number]\n- percentiles: 要計算的百分位數\n'''"
+  },
+  {
+    "objectID": "posts/2025-01-03-python-pandas/index.html#資料選取與過濾",
+    "href": "posts/2025-01-03-python-pandas/index.html#資料選取與過濾",
+    "title": "Pandas 常用語法整理",
+    "section": "4 資料選取與過濾",
+    "text": "4 資料選取與過濾\n# 選取單一欄位\ndf['column_name']\n\n# 選取多個欄位\ndf[['column1', 'column2']]\n\n# 條件過濾\ndf[df['age'] &gt; 25]\n\n# 多重條件過濾\ndf[(df['age'] &gt; 25) & (df['salary'] &gt; 50000)]\n\n# 使用 iloc 依照位置選取\ndf.iloc[0:5, 0:2]  # 選取前5列，前2欄\n\n# 使用 loc 依照標籤選取\ndf.loc['row_label', 'column_label']\n'''\nloc 常用用法：\n- df.loc[row_indexer, column_indexer]\n- df.loc['row_label']  # 選取單一列\n- df.loc[:, 'column_label']  # 選取單一欄\n- df.loc['start':'end']  # 選取範圍\n'''"
+  },
+  {
+    "objectID": "posts/2025-01-03-python-pandas/index.html#資料處理與清理",
+    "href": "posts/2025-01-03-python-pandas/index.html#資料處理與清理",
+    "title": "Pandas 常用語法整理",
+    "section": "5 資料處理與清理",
+    "text": "5 資料處理與清理\n# 處理缺失值\ndf.isna()  # 檢查缺失值\ndf.fillna(0)  # 填補缺失值\ndf.dropna()  # 刪除含有缺失值的列\n'''\n常用參數：\n- axis: 0 刪除列, 1 刪除欄\n- how: 'any' 任一缺失則刪除, 'all' 全部缺失才刪除\n- subset: 指定要檢查的欄位\n'''\n\n# 重複值處理\ndf.duplicated()  # 檢查重複值\ndf.drop_duplicates()  # 刪除重複列\n\n# 重新命名欄位\ndf.rename(columns={'old_name': 'new_name'})\n\n# 資料型態轉換\ndf['column'].astype('int64')\n'''\n常用型態：\n- int64, float64: 數值型態\n- str, object: 字串型態\n- datetime64: 時間型態\n- category: 類別型態\n'''"
+  },
+  {
+    "objectID": "posts/2025-01-03-python-pandas/index.html#資料運算與統計",
+    "href": "posts/2025-01-03-python-pandas/index.html#資料運算與統計",
+    "title": "Pandas 常用語法整理",
+    "section": "6 資料運算與統計",
+    "text": "6 資料運算與統計\n# 基本統計\ndf['column'].mean()  # 平均值\ndf['column'].median()  # 中位數\ndf['column'].mode()  # 眾數\ndf['column'].std()  # 標準差\n\n# 群組運算\ndf.groupby('category')['value'].mean()\n'''\n常用參數：\n- by: 分組依據，可使用多個欄位\n- as_index: 是否將分組欄位作為索引\n- observed: 是否只使用觀察到的類別\n'''\n\n# 排序\ndf.sort_values('column', ascending=False)\n'''\n常用參數：\n- by: 排序依據，可使用多個欄位\n- ascending: True 升序, False 降序\n- na_position: 'first' 或 'last'\n- inplace: 是否直接修改原資料\n'''"
+  },
+  {
+    "objectID": "posts/2025-01-03-python-pandas/index.html#資料合併",
+    "href": "posts/2025-01-03-python-pandas/index.html#資料合併",
+    "title": "Pandas 常用語法整理",
+    "section": "7 資料合併",
+    "text": "7 資料合併\n# 合併兩個 DataFrame\npd.concat([df1, df2])  # 垂直合併\npd.concat([df1, df2], axis=1)  # 水平合併\n\n# 使用 merge 合併\npd.merge(df1, df2, on='key_column')\n'''\n常用參數：\n- how: 'inner', 'outer', 'left', 'right' 合併方式\n- on: 合併依據的欄位\n- left_on/right_on: 左右資料表合併依據的欄位\n- suffixes: 重複欄位的後綴\n'''\n\n# 垂直合併\npd.concat([df1, df2])\n'''\n常用參數：\n- axis: 0 垂直合併, 1 水平合併\n- ignore_index: 是否重新產生索引\n- join: 'inner' 或 'outer' 合併方式\n'''"
+  },
+  {
+    "objectID": "posts/2025-01-03-python-pandas/index.html#資料匯出",
+    "href": "posts/2025-01-03-python-pandas/index.html#資料匯出",
+    "title": "Pandas 常用語法整理",
+    "section": "8 資料匯出",
+    "text": "8 資料匯出\n# 匯出成不同格式\ndf.to_csv('output.csv', index=False)\ndf.to_excel('output.xlsx')\ndf.to_json('output.json')"
+  },
+  {
+    "objectID": "posts/2025-01-03-python-pandas/index.html#樞紐表",
+    "href": "posts/2025-01-03-python-pandas/index.html#樞紐表",
+    "title": "Pandas 常用語法整理",
+    "section": "9 樞紐表",
+    "text": "9 樞紐表\n# 樞紐表\npd.pivot_table(df, \n    values='value', \n    index='category1',\n    columns='category2', \n    aggfunc='mean'\n)\n'''\n常用參數：\n- values: 要計算的欄位\n- index: 列索引\n- columns: 欄索引\n- aggfunc: 計算方式，如 'mean', 'sum', 'count'\n- fill_value: 缺失值填補值\n- margins: 是否顯示總計\n'''"
+  },
+  {
+    "objectID": "posts/2025-01-03-python-pandas/index.html#時間序列處理",
+    "href": "posts/2025-01-03-python-pandas/index.html#時間序列處理",
+    "title": "Pandas 常用語法整理",
+    "section": "10 時間序列處理",
+    "text": "10 時間序列處理\n# 時間序列處理\ndf['date'] = pd.to_datetime(df['date'])\n'''\n常用參數：\n- format: 時間格式，如 '%Y-%m-%d'\n- errors: 'raise', 'coerce', 'ignore'\n'''\n\ndf.set_index('date', inplace=True)\ndf.resample('M').mean()\n'''\n常用參數：\n- rule: 重新取樣頻率\n  - 'D': 日\n  - 'W': 週\n  - 'M': 月\n  - 'Q': 季\n  - 'Y': 年\n- on: 依據的時間欄位\n- closed: 區間閉合方式\n'''"
+  },
+  {
+    "objectID": "posts/2025-01-03-python-pandas/index.html#字串處理",
+    "href": "posts/2025-01-03-python-pandas/index.html#字串處理",
+    "title": "Pandas 常用語法整理",
+    "section": "11 字串處理",
+    "text": "11 字串處理\n# 字串處理\ndf['text'].str.contains('pattern')\n'''\n常用參數：\n- pat: 要搜尋的模式\n- case: 是否區分大小寫\n- regex: 是否使用正則表達式\n- na: 缺失值的處理方式\n'''\n\ndf['text'].str.replace('old', 'new')\n'''\n常用參數：\n- pat: 要替換的模式\n- repl: 替換後的字串\n- regex: 是否使用正則表達式\n- n: 替換次數\n'''"
+  }
+]
