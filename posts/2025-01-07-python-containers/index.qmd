@@ -1,0 +1,263 @@
+---
+title: "Python 容器: list, tuple, set, dict"
+description: "整理 Python 的容器中 list, tuple, set, dict，常用的操作語法"
+date: "2025-01-07"
+categories: [Python, Data Analysis]
+image: "/assets/images/py_containers.png"
+---
+## 容器比較
+
+| 特性 | list | tuple | set | dict |
+|------|------|-------|-----|------|
+| 可變性 | 可變 | 不可變 | 可變 | 可變 |
+| 有序性 | 有序 | 有序 | 無序 | 無序 |
+| 索引存取 | ✓ | ✓ | ✗ | ✗ |
+| 重複元素 | 允許 | 允許 | 不允許 | 不允許(鍵) |
+| 主要用途 | 序列操作 | 不可變序列 | 集合運算 | 鍵值映射 |
+| 建立語法 | `[]` | `()` | `{}` | `{key:value}` |
+
+## 使用建議
+
+1. **list**：
+   - 需要經常修改內容時
+   - 需要保持元素順序時
+   - 允許重複元素時
+
+2. **tuple**：
+   - 資料不應被修改時
+   - 作為字典的鍵時
+   - 需要較好的效能時
+
+3. **set**：
+   - 需要去除重複元素時
+   - 需要進行集合運算時
+   - 需要快速成員檢查時
+
+4. **dict**：
+   - 需要鍵值對映射時
+   - 需要快速查找時
+   - 需要儲存具有屬性的資料時
+
+## 常用排行
+```{python}
+#| echo: false
+import pandas as pd
+
+# 建立基本資料
+data = [
+    ["list.append()", "新增元素到列表尾端", "⭐⭐⭐⭐⭐"],
+    ["dict['key']", "取得字典值", "⭐⭐⭐⭐⭐"],
+    ["len()", "取得容器長度", "⭐⭐⭐⭐⭐"],
+    ["list[index]", "索引存取", "⭐⭐⭐⭐⭐"],
+    ["dict.get()", "安全取得字典值", "⭐⭐⭐⭐"],
+    ["set.add()", "新增元素到集合", "⭐⭐⭐⭐"],
+    ["list.extend()", "合併列表", "⭐⭐⭐"],
+    ["dict.items()", "取得鍵值對", "⭐⭐⭐"],
+    ["set.union()", "集合聯集", "⭐⭐⭐"],
+    ["list.sort()", "排序列表", "⭐⭐⭐"],
+    ["dict.update()", "更新字典", "⭐⭐"],
+    ["tuple[index]", "存取元組元素", "⭐⭐"],
+    ["set.intersection()", "集合交集", "⭐⭐"],
+    ["list.pop()", "移除並回傳元素", "⭐⭐"],
+    ["dict.keys()", "取得所有鍵", "⭐⭐"]
+]
+
+df_codes = pd.DataFrame(data, columns=["Code", "Description", "Rating"])
+
+# 加入連結
+links = {
+    "list.append()": "list-列表",
+    "dict['key']": "dict-字典",
+    "len()": "基本操作",
+    "list[index]": "list-列表",
+    "dict.get()": "dict-字典",
+    "set.add()": "set-集合",
+    "list.extend()": "list-列表",
+    "dict.items()": "dict-字典",
+    "set.union()": "set-集合",
+    "list.sort()": "list-列表",
+    "dict.update()": "dict-字典",
+    "tuple[index]": "tuple-元組",
+    "set.intersection()": "set-集合",
+    "list.pop()": "list-列表",
+    "dict.keys()": "dict-字典"
+}
+
+# 將 Code 欄位轉換成帶有連結的 HTML
+df_codes['Code'] = df_codes['Code'].apply(lambda x: f'<a href="#{links[x]}">{x}</a>')
+
+# 顯示表格，允許 HTML
+df_codes.style.format({'Code': lambda x: x}).set_properties(**{'text-align': 'left'})
+```
+
+## 基本操作
+
+```python
+# 建立空容器
+empty_list = []
+empty_tuple = ()
+empty_set = set()
+empty_dict = {}
+
+# 取得容器長度
+len(container)
+
+# 判斷元素是否存在
+element in container
+
+# 容器轉換
+list(tuple_or_set)  # 轉換為列表
+tuple(list_or_set)  # 轉換為元組
+set(list_or_tuple)  # 轉換為集合
+
+# 清空容器
+container.clear()  # 適用於 list, set, dict
+```
+
+## list 列表
+
+```python
+# 建立列表
+fruits = ['apple', 'banana', 'orange']
+numbers = list(range(5))  # [0, 1, 2, 3, 4]
+
+# 存取元素
+fruits[0]      # 第一個元素
+fruits[-1]     # 最後一個元素
+fruits[1:3]    # 切片：第二到第三個元素
+
+# 修改元素
+fruits[0] = 'pear'
+
+# 新增元素
+fruits.append('grape')        # 新增到尾端
+fruits.insert(0, 'cherry')   # 指定位置新增
+fruits.extend(['kiwi', 'mango'])  # 合併列表
+
+# 刪除元素
+fruits.remove('banana')    # 刪除指定元素
+fruits.pop()              # 移除並回傳最後一個元素
+fruits.pop(0)             # 移除並回傳指定位置元素
+del fruits[0]             # 刪除指定位置元素
+
+# 排序
+fruits.sort()             # 原地排序
+fruits.sort(reverse=True) # 反向排序
+sorted(fruits)            # 回傳新的排序列表
+
+# 其他操作
+fruits.index('apple')     # 取得元素索引
+fruits.count('apple')     # 計算元素出現次數
+fruits.reverse()          # 反轉列表
+```
+
+## tuple 元組
+
+```python
+# 建立元組
+coordinates = (3, 4)
+single_item = (1,)  # 單一元素要加逗號
+
+# 存取元素
+coordinates[0]      # 第一個元素
+coordinates[-1]     # 最後一個元素
+coordinates[0:2]    # 切片
+
+# 元組解包
+x, y = coordinates
+
+# 常用操作
+len(coordinates)    # 取得長度
+3 in coordinates    # 檢查元素是否存在
+coordinates.count(3)  # 計算元素出現次數
+coordinates.index(3)  # 取得元素索引
+
+# 元組串接
+coordinates + (5, 6)  # 回傳新元組
+coordinates * 2       # 重複元組
+```
+
+## set 集合
+
+```python
+# 建立集合
+fruits = {'apple', 'banana', 'orange'}
+numbers = set([1, 2, 3, 3])  # 重複元素會被移除
+
+# 新增與刪除
+fruits.add('grape')       # 新增元素
+fruits.remove('apple')    # 刪除元素（元素不存在會報錯）
+fruits.discard('apple')   # 安全刪除（元素不存在不會報錯）
+fruits.pop()             # 隨機移除並回傳一個元素
+
+# 集合運算
+set1 = {1, 2, 3}
+set2 = {3, 4, 5}
+
+# 聯集
+set1 | set2              # 運算子方式
+set1.union(set2)         # 方法方式
+
+# 交集
+set1 & set2              # 運算子方式
+set1.intersection(set2)   # 方法方式
+
+# 差集
+set1 - set2              # 運算子方式
+set1.difference(set2)     # 方法方式
+
+# 對稱差集
+set1 ^ set2              # 運算子方式
+set1.symmetric_difference(set2)  # 方法方式
+
+# 子集與超集
+set1 <= set2             # 子集
+set1.issubset(set2)      # 子集
+set1 >= set2             # 超集
+set1.issuperset(set2)    # 超集
+```
+
+## dict 字典
+
+```python
+# 建立字典
+person = {
+    'name': 'John',
+    'age': 30,
+    'city': 'Taipei'
+}
+
+# 存取元素
+person['name']           # 取得值（鍵不存在會報錯）
+person.get('name')       # 安全取得值（鍵不存在回傳 None）
+person.get('phone', 'N/A')  # 指定預設值
+
+# 修改與新增
+person['age'] = 31       # 修改值
+person['phone'] = '123'  # 新增鍵值對
+
+# 刪除
+del person['age']        # 刪除鍵值對
+person.pop('age')        # 移除並回傳值
+person.popitem()         # 移除並回傳最後一個鍵值對
+
+# 字典方法
+person.keys()            # 取得所有鍵
+person.values()          # 取得所有值
+person.items()           # 取得所有鍵值對
+
+# 更新字典
+person.update({'age': 32, 'gender': 'M'})
+
+# 字典合併（Python 3.9+）
+dict1 = {'a': 1, 'b': 2}
+dict2 = {'c': 3, 'd': 4}
+merged = dict1 | dict2   # 合併字典
+
+# 字典推導式
+squares = {x: x**2 for x in range(5)}
+```
+
+
+
+

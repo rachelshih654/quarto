@@ -1,39 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://mickael.canouil.fr/index.html</loc>
-    <lastmod>2025-01-03T04:18:16.294Z</lastmod>
+    <loc>https://rachelshih654.github.io/quarto/projects.html</loc>
+    <lastmod>2025-01-03T09:06:33.111Z</lastmod>
   </url>
   <url>
-    <loc>https://mickael.canouil.fr/projects.html</loc>
-    <lastmod>2025-01-03T04:17:09.794Z</lastmod>
+    <loc>https://rachelshih654.github.io/quarto/index.html</loc>
+    <lastmod>2025-01-03T09:06:33.106Z</lastmod>
   </url>
   <url>
-    <loc>https://mickael.canouil.fr/blog.html</loc>
-    <lastmod>2025-01-03T04:17:32.175Z</lastmod>
+    <loc>https://rachelshih654.github.io/quarto/blog.html</loc>
+    <lastmod>2025-01-03T09:06:33.104Z</lastmod>
   </url>
   <url>
-    <loc>https://rachelshih.github.io/blog.html</loc>
-    <lastmod>2025-01-03T05:55:40.866Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rachelshih.github.io/index.html</loc>
-    <lastmod>2025-01-03T05:45:17.079Z</lastmod>
-  </url>
-  <url>
-    <loc>/blog.html</loc>
-    <lastmod>2025-01-03T05:55:40.866Z</lastmod>
+    <loc>https://rachelshih654.github.io/quarto/posts/2025-01-03-python-pandas/index.html</loc>
+    <lastmod>2025-01-03T09:06:33.108Z</lastmod>
   </url>
   <url>
     <loc>/projects.html</loc>
-    <lastmod>2025-01-03T06:02:14.184Z</lastmod>
+    <lastmod>2025-01-04T11:50:52.607Z</lastmod>
+  </url>
+  <url>
+    <loc>/posts/2025-01-07-python-containers/index.html</loc>
+    <lastmod>2025-01-07T08:06:17.925Z</lastmod>
+  </url>
+  <url>
+    <loc>/blog.html</loc>
+    <lastmod>2025-01-03T09:06:33.104Z</lastmod>
   </url>
   <url>
     <loc>/index.html</loc>
-    <lastmod>2025-01-03T08:43:30.300Z</lastmod>
-  </url>
-  <url>
-    <loc>/posts/2025-01-03-python-pandas/index.html</loc>
-    <lastmod>2025-01-03T07:37:23.617Z</lastmod>
+    <lastmod>2025-01-03T09:06:33.106Z</lastmod>
   </url>
 </urlset>

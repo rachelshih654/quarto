@@ -1,13 +1,12 @@
 [
   {
-    "listing": "/blog.html",
-    "items": [
-      "/posts/2025-01-03-python-pandas/index.html"
-    ]
+    "listing": "/projects.html",
+    "items": []
   },
   {
-    "listing": "/projects.html",
+    "listing": "/blog.html",
     "items": [
+      "/posts/2025-01-07-python-containers/index.html",
       "/posts/2025-01-03-python-pandas/index.html"
     ]
   }

@@ -4,7 +4,7 @@ page-layout: full
 title-block-banner: true
 # image: /assets/images/social-profile.png
 listing:
-  contents: posts
+  contents: projects
   sort: "date desc"
   type: default
   categories: true
