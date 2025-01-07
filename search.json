@@ -4,35 +4,7 @@
     "href": "projects.html",
     "title": "Projects",
     "section": "",
-    "text": "Pandas 常用語法整理\n\n\n\n\n\n\nPython\n\n\nPandas\n\n\nData Analysis\n\n\n\n整理 Python Pandas 常用的資料處理語法，包含讀取資料、基本操作、資料清理等\n\n\n\n\n\nFriday, the 3rd of January, 2025\n\n\nRachel SHIH\n\n\n\n\n\n\nNo matching items\n\n Back to top"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Rachel SHIH",
-    "section": "",
-    "text": "我是一名數據分析師，專注於數據分析、數據可視化、多組學數據分析、長期追蹤數據分析、知識分享、學習新技能。"
-  },
-  {
-    "objectID": "index.html#education",
-    "href": "index.html#education",
-    "title": "Rachel SHIH",
-    "section": "Education",
-    "text": "Education\n\nM.Sc. in Statistics , 2023\nNational Taipei University, Taiwan\nB.Sc. in Mathematics , 2018\nFu Jen Catholic University"
-  },
-  {
-    "objectID": "index.html#interests",
-    "href": "index.html#interests",
-    "title": "Rachel SHIH",
-    "section": "Interests",
-    "text": "Interests\n\nData Analysis\nData Visualisation\nKnowledge Sharing\nLearning New Skills"
-  },
-  {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "Blog",
-    "section": "",
-    "text": "Pandas 常用語法整理\n\n\n\n\n\n\nPython\n\n\nPandas\n\n\nData Analysis\n\n\n\n整理 Python Pandas 常用的資料處理語法，包含讀取資料、基本操作、資料清理等\n\n\n\n\n\nFriday, the 3rd of January, 2025\n\n\nRachel SHIH\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "No matching items\n\n Back to top"
   },
   {
     "objectID": "posts/2025-01-03-python-pandas/index.html",
@@ -117,5 +89,96 @@
     "title": "Pandas 常用語法整理",
     "section": "11 字串處理",
     "text": "11 字串處理\n# 字串處理\ndf['text'].str.contains('pattern')\n'''\n常用參數：\n- pat: 要搜尋的模式\n- case: 是否區分大小寫\n- regex: 是否使用正則表達式\n- na: 缺失值的處理方式\n'''\n\ndf['text'].str.replace('old', 'new')\n'''\n常用參數：\n- pat: 要替換的模式\n- repl: 替換後的字串\n- regex: 是否使用正則表達式\n- n: 替換次數\n'''"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog",
+    "section": "",
+    "text": "Python 容器: list, tuple, set, dict\n\n\n\n\n\n\nPython\n\n\nData Analysis\n\n\n\n整理 Python 的容器中 list, tuple, set, dict，常用的操作語法\n\n\n\n\n\nTuesday, the 7th of January, 2025\n\n\nRachel SHIH\n\n\n\n\n\n\n\n\n\n\n\n\nPandas 常用語法整理\n\n\n\n\n\n\nPython\n\n\nPandas\n\n\nData Analysis\n\n\n\n整理 Python Pandas 常用的資料處理語法，包含讀取資料、基本操作、資料清理等\n\n\n\n\n\nFriday, the 3rd of January, 2025\n\n\nRachel SHIH\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Rachel SHIH",
+    "section": "",
+    "text": "我是一名數據分析師，專注於數據分析、數據可視化、多組學數據分析、長期追蹤數據分析、知識分享、學習新技能。"
+  },
+  {
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "Rachel SHIH",
+    "section": "Education",
+    "text": "Education\n\nM.Sc. in Statistics , 2023\nNational Taipei University, Taiwan\nB.Sc. in Mathematics , 2018\nFu Jen Catholic University"
+  },
+  {
+    "objectID": "index.html#interests",
+    "href": "index.html#interests",
+    "title": "Rachel SHIH",
+    "section": "Interests",
+    "text": "Interests\n\nData Analysis\nData Visualisation\nKnowledge Sharing\nLearning New Skills"
+  },
+  {
+    "objectID": "posts/2025-01-07-python-containers/index.html",
+    "href": "posts/2025-01-07-python-containers/index.html",
+    "title": "Python 容器: list, tuple, set, dict",
+    "section": "",
+    "text": "Code\nDescription\nRating\n\n\n\n\n0\nlist.append()\n新增元素到列表尾端\n⭐⭐⭐⭐⭐\n\n\n1\ndict['key']\n取得字典值\n⭐⭐⭐⭐⭐\n\n\n2\nlen()\n取得容器長度\n⭐⭐⭐⭐⭐\n\n\n3\nlist[index]\n索引存取\n⭐⭐⭐⭐⭐\n\n\n4\ndict.get()\n安全取得字典值\n⭐⭐⭐⭐\n\n\n5\nset.add()\n新增元素到集合\n⭐⭐⭐⭐\n\n\n6\nlist.extend()\n合併列表\n⭐⭐⭐\n\n\n7\ndict.items()\n取得鍵值對\n⭐⭐⭐\n\n\n8\nset.union()\n集合聯集\n⭐⭐⭐\n\n\n9\nlist.sort()\n排序列表\n⭐⭐⭐\n\n\n10\ndict.update()\n更新字典\n⭐⭐\n\n\n11\ntuple[index]\n存取元組元素\n⭐⭐\n\n\n12\nset.intersection()\n集合交集\n⭐⭐\n\n\n13\nlist.pop()\n移除並回傳元素\n⭐⭐\n\n\n14\ndict.keys()\n取得所有鍵\n⭐⭐"
+  },
+  {
+    "objectID": "posts/2025-01-07-python-containers/index.html#常用排行",
+    "href": "posts/2025-01-07-python-containers/index.html#常用排行",
+    "title": "Python 容器: list, tuple, set, dict",
+    "section": "",
+    "text": "Code\nDescription\nRating\n\n\n\n\n0\nlist.append()\n新增元素到列表尾端\n⭐⭐⭐⭐⭐\n\n\n1\ndict['key']\n取得字典值\n⭐⭐⭐⭐⭐\n\n\n2\nlen()\n取得容器長度\n⭐⭐⭐⭐⭐\n\n\n3\nlist[index]\n索引存取\n⭐⭐⭐⭐⭐\n\n\n4\ndict.get()\n安全取得字典值\n⭐⭐⭐⭐\n\n\n5\nset.add()\n新增元素到集合\n⭐⭐⭐⭐\n\n\n6\nlist.extend()\n合併列表\n⭐⭐⭐\n\n\n7\ndict.items()\n取得鍵值對\n⭐⭐⭐\n\n\n8\nset.union()\n集合聯集\n⭐⭐⭐\n\n\n9\nlist.sort()\n排序列表\n⭐⭐⭐\n\n\n10\ndict.update()\n更新字典\n⭐⭐\n\n\n11\ntuple[index]\n存取元組元素\n⭐⭐\n\n\n12\nset.intersection()\n集合交集\n⭐⭐\n\n\n13\nlist.pop()\n移除並回傳元素\n⭐⭐\n\n\n14\ndict.keys()\n取得所有鍵\n⭐⭐"
+  },
+  {
+    "objectID": "posts/2025-01-07-python-containers/index.html#基本操作",
+    "href": "posts/2025-01-07-python-containers/index.html#基本操作",
+    "title": "Python 容器: list, tuple, set, dict",
+    "section": "2 基本操作",
+    "text": "2 基本操作\n# 建立空容器\nempty_list = []\nempty_tuple = ()\nempty_set = set()\nempty_dict = {}\n\n# 取得容器長度\nlen(container)\n\n# 判斷元素是否存在\nelement in container\n\n# 容器轉換\nlist(tuple_or_set)  # 轉換為列表\ntuple(list_or_set)  # 轉換為元組\nset(list_or_tuple)  # 轉換為集合\n\n# 清空容器\ncontainer.clear()  # 適用於 list, set, dict"
+  },
+  {
+    "objectID": "posts/2025-01-07-python-containers/index.html#list-列表",
+    "href": "posts/2025-01-07-python-containers/index.html#list-列表",
+    "title": "Python 容器: list, tuple, set, dict",
+    "section": "3 list 列表",
+    "text": "3 list 列表\n# 建立列表\nfruits = ['apple', 'banana', 'orange']\nnumbers = list(range(5))  # [0, 1, 2, 3, 4]\n\n# 存取元素\nfruits[0]      # 第一個元素\nfruits[-1]     # 最後一個元素\nfruits[1:3]    # 切片：第二到第三個元素\n\n# 修改元素\nfruits[0] = 'pear'\n\n# 新增元素\nfruits.append('grape')        # 新增到尾端\nfruits.insert(0, 'cherry')   # 指定位置新增\nfruits.extend(['kiwi', 'mango'])  # 合併列表\n\n# 刪除元素\nfruits.remove('banana')    # 刪除指定元素\nfruits.pop()              # 移除並回傳最後一個元素\nfruits.pop(0)             # 移除並回傳指定位置元素\ndel fruits[0]             # 刪除指定位置元素\n\n# 排序\nfruits.sort()             # 原地排序\nfruits.sort(reverse=True) # 反向排序\nsorted(fruits)            # 回傳新的排序列表\n\n# 其他操作\nfruits.index('apple')     # 取得元素索引\nfruits.count('apple')     # 計算元素出現次數\nfruits.reverse()          # 反轉列表"
+  },
+  {
+    "objectID": "posts/2025-01-07-python-containers/index.html#tuple-元組",
+    "href": "posts/2025-01-07-python-containers/index.html#tuple-元組",
+    "title": "Python 容器: list, tuple, set, dict",
+    "section": "4 tuple 元組",
+    "text": "4 tuple 元組\n# 建立元組\ncoordinates = (3, 4)\nsingle_item = (1,)  # 單一元素要加逗號\n\n# 存取元素\ncoordinates[0]      # 第一個元素\ncoordinates[-1]     # 最後一個元素\ncoordinates[0:2]    # 切片\n\n# 元組解包\nx, y = coordinates\n\n# 常用操作\nlen(coordinates)    # 取得長度\n3 in coordinates    # 檢查元素是否存在\ncoordinates.count(3)  # 計算元素出現次數\ncoordinates.index(3)  # 取得元素索引\n\n# 元組串接\ncoordinates + (5, 6)  # 回傳新元組\ncoordinates * 2       # 重複元組"
+  },
+  {
+    "objectID": "posts/2025-01-07-python-containers/index.html#set-集合",
+    "href": "posts/2025-01-07-python-containers/index.html#set-集合",
+    "title": "Python 容器: list, tuple, set, dict",
+    "section": "5 set 集合",
+    "text": "5 set 集合\n# 建立集合\nfruits = {'apple', 'banana', 'orange'}\nnumbers = set([1, 2, 3, 3])  # 重複元素會被移除\n\n# 新增與刪除\nfruits.add('grape')       # 新增元素\nfruits.remove('apple')    # 刪除元素（元素不存在會報錯）\nfruits.discard('apple')   # 安全刪除（元素不存在不會報錯）\nfruits.pop()             # 隨機移除並回傳一個元素\n\n# 集合運算\nset1 = {1, 2, 3}\nset2 = {3, 4, 5}\n\n# 聯集\nset1 | set2              # 運算子方式\nset1.union(set2)         # 方法方式\n\n# 交集\nset1 & set2              # 運算子方式\nset1.intersection(set2)   # 方法方式\n\n# 差集\nset1 - set2              # 運算子方式\nset1.difference(set2)     # 方法方式\n\n# 對稱差集\nset1 ^ set2              # 運算子方式\nset1.symmetric_difference(set2)  # 方法方式\n\n# 子集與超集\nset1 &lt;= set2             # 子集\nset1.issubset(set2)      # 子集\nset1 &gt;= set2             # 超集\nset1.issuperset(set2)    # 超集"
+  },
+  {
+    "objectID": "posts/2025-01-07-python-containers/index.html#dict-字典",
+    "href": "posts/2025-01-07-python-containers/index.html#dict-字典",
+    "title": "Python 容器: list, tuple, set, dict",
+    "section": "6 dict 字典",
+    "text": "6 dict 字典\n# 建立字典\nperson = {\n    'name': 'John',\n    'age': 30,\n    'city': 'Taipei'\n}\n\n# 存取元素\nperson['name']           # 取得值（鍵不存在會報錯）\nperson.get('name')       # 安全取得值（鍵不存在回傳 None）\nperson.get('phone', 'N/A')  # 指定預設值\n\n# 修改與新增\nperson['age'] = 31       # 修改值\nperson['phone'] = '123'  # 新增鍵值對\n\n# 刪除\ndel person['age']        # 刪除鍵值對\nperson.pop('age')        # 移除並回傳值\nperson.popitem()         # 移除並回傳最後一個鍵值對\n\n# 字典方法\nperson.keys()            # 取得所有鍵\nperson.values()          # 取得所有值\nperson.items()           # 取得所有鍵值對\n\n# 更新字典\nperson.update({'age': 32, 'gender': 'M'})\n\n# 字典合併（Python 3.9+）\ndict1 = {'a': 1, 'b': 2}\ndict2 = {'c': 3, 'd': 4}\nmerged = dict1 | dict2   # 合併字典\n\n# 字典推導式\nsquares = {x: x**2 for x in range(5)}"
+  },
+  {
+    "objectID": "posts/2025-01-07-python-containers/index.html#容器比較",
+    "href": "posts/2025-01-07-python-containers/index.html#容器比較",
+    "title": "Python 容器: list, tuple, set, dict",
+    "section": "7 容器比較",
+    "text": "7 容器比較\n\n\n\n特性\nlist\ntuple\nset\ndict\n\n\n\n\n可變性\n可變\n不可變\n可變\n可變\n\n\n有序性\n有序\n有序\n無序\n無序\n\n\n索引存取\n✓\n✓\n✗\n✗\n\n\n重複元素\n允許\n允許\n不允許\n不允許(鍵)\n\n\n主要用途\n序列操作\n不可變序列\n集合運算\n鍵值映射\n\n\n建立語法\n[]\n()\n{}\n{key:value}"
+  },
+  {
+    "objectID": "posts/2025-01-07-python-containers/index.html#使用建議",
+    "href": "posts/2025-01-07-python-containers/index.html#使用建議",
+    "title": "Python 容器: list, tuple, set, dict",
+    "section": "8 使用建議",
+    "text": "8 使用建議\n\nlist：\n\n需要經常修改內容時\n需要保持元素順序時\n允許重複元素時\n\ntuple：\n\n資料不應被修改時\n作為字典的鍵時\n需要較好的效能時\n\nset：\n\n需要去除重複元素時\n需要進行集合運算時\n需要快速成員檢查時\n\ndict：\n\n需要鍵值對映射時\n需要快速查找時\n需要儲存具有屬性的資料時"
   }
 ]

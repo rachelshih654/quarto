@@ -1,1 +1,1 @@
-Sitemap: https://rachelshih654.github.io/quarto/sitemap.xml
+Sitemap: /sitemap.xml
