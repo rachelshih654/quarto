@@ -7,34 +7,6 @@
     "text": "No matching items\n\n Back to top"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Rachel SHIH",
-    "section": "",
-    "text": "我是一名數據分析師，專注於數據分析、數據可視化、多組學數據分析、長期追蹤數據分析、知識分享、學習新技能。"
-  },
-  {
-    "objectID": "index.html#education",
-    "href": "index.html#education",
-    "title": "Rachel SHIH",
-    "section": "Education",
-    "text": "Education\n\nM.Sc. in Statistics , 2023\nNational Taipei University, Taiwan\nB.Sc. in Mathematics , 2018\nFu Jen Catholic University"
-  },
-  {
-    "objectID": "index.html#interests",
-    "href": "index.html#interests",
-    "title": "Rachel SHIH",
-    "section": "Interests",
-    "text": "Interests\n\nData Analysis\nData Visualisation\nKnowledge Sharing\nLearning New Skills"
-  },
-  {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "Blog",
-    "section": "",
-    "text": "Python 容器: list, tuple, set, dict\n\n\n\n\n\n\nPython\n\n\n\n整理 Python 常用的容器，包含 list, tuple, set, dict\n\n\n\n\n\nTuesday, the 7th of January, 2025\n\n\nRachel SHIH\n\n\n\n\n\n\n\n\n\n\n\n\nPandas 常用語法整理\n\n\n\n\n\n\nPython\n\n\nPandas\n\n\nData Analysis\n\n\n\n整理 Python Pandas 常用的資料處理語法，包含讀取資料、基本操作、資料清理等\n\n\n\n\n\nFriday, the 3rd of January, 2025\n\n\nRachel SHIH\n\n\n\n\n\n\nNo matching items\n\n Back to top"
-  },
-  {
     "objectID": "posts/2025-01-03-python-pandas/index.html",
     "href": "posts/2025-01-03-python-pandas/index.html",
     "title": "Pandas 常用語法整理",
@@ -117,6 +89,34 @@
     "title": "Pandas 常用語法整理",
     "section": "11 字串處理",
     "text": "11 字串處理\n# 字串處理\ndf['text'].str.contains('pattern')\n'''\n常用參數：\n- pat: 要搜尋的模式\n- case: 是否區分大小寫\n- regex: 是否使用正則表達式\n- na: 缺失值的處理方式\n'''\n\ndf['text'].str.replace('old', 'new')\n'''\n常用參數：\n- pat: 要替換的模式\n- repl: 替換後的字串\n- regex: 是否使用正則表達式\n- n: 替換次數\n'''"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog",
+    "section": "",
+    "text": "Python 容器: list, tuple, set, dict\n\n\n\n\n\n\nPython\n\n\nData Analysis\n\n\n\n整理 Python 的容器中 list, tuple, set, dict，常用的操作語法\n\n\n\n\n\nTuesday, the 7th of January, 2025\n\n\nRachel SHIH\n\n\n\n\n\n\n\n\n\n\n\n\nPandas 常用語法整理\n\n\n\n\n\n\nPython\n\n\nPandas\n\n\nData Analysis\n\n\n\n整理 Python Pandas 常用的資料處理語法，包含讀取資料、基本操作、資料清理等\n\n\n\n\n\nFriday, the 3rd of January, 2025\n\n\nRachel SHIH\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Rachel SHIH",
+    "section": "",
+    "text": "我是一名數據分析師，專注於數據分析、數據可視化、多組學數據分析、長期追蹤數據分析、知識分享、學習新技能。"
+  },
+  {
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "Rachel SHIH",
+    "section": "Education",
+    "text": "Education\n\nM.Sc. in Statistics , 2023\nNational Taipei University, Taiwan\nB.Sc. in Mathematics , 2018\nFu Jen Catholic University"
+  },
+  {
+    "objectID": "index.html#interests",
+    "href": "index.html#interests",
+    "title": "Rachel SHIH",
+    "section": "Interests",
+    "text": "Interests\n\nData Analysis\nData Visualisation\nKnowledge Sharing\nLearning New Skills"
   },
   {
     "objectID": "posts/2025-01-07-python-containers/index.html",

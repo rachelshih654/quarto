@@ -1,35 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://rachelshih654.github.io/quarto/projects.html</loc>
-    <lastmod>2025-01-03T09:06:33.111Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rachelshih654.github.io/quarto/index.html</loc>
-    <lastmod>2025-01-03T09:06:33.106Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rachelshih654.github.io/quarto/blog.html</loc>
-    <lastmod>2025-01-03T09:06:33.104Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rachelshih654.github.io/quarto/posts/2025-01-03-python-pandas/index.html</loc>
-    <lastmod>2025-01-03T09:06:33.108Z</lastmod>
-  </url>
-  <url>
     <loc>/projects.html</loc>
-    <lastmod>2025-01-04T11:50:52.607Z</lastmod>
+    <lastmod>2025-01-07T08:26:07.040Z</lastmod>
   </url>
   <url>
-    <loc>/posts/2025-01-07-python-containers/index.html</loc>
-    <lastmod>2025-01-07T08:06:17.925Z</lastmod>
+    <loc>/posts/2025-01-03-python-pandas/index.html</loc>
+    <lastmod>2025-01-07T08:26:07.034Z</lastmod>
   </url>
   <url>
     <loc>/blog.html</loc>
-    <lastmod>2025-01-03T09:06:33.104Z</lastmod>
+    <lastmod>2025-01-17T03:11:25.770Z</lastmod>
   </url>
   <url>
     <loc>/index.html</loc>
-    <lastmod>2025-01-03T09:06:33.106Z</lastmod>
+    <lastmod>2025-01-07T08:26:07.031Z</lastmod>
+  </url>
+  <url>
+    <loc>/posts/2025-01-07-python-containers/index.html</loc>
+    <lastmod>2025-01-07T08:26:07.036Z</lastmod>
   </url>
 </urlset>

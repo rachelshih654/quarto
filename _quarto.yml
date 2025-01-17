@@ -5,7 +5,7 @@ project:
 website:
   title: "SHIH"
   description: "A data science blog and portfolio by Rachel SHIH"
-  # favicon: /assets/images/logo.svg
+  favicon: /assets/images/logo.png
   # image: /assets/images/social-profile.png
   site-url: ''
   repo-url: ''
@@ -23,7 +23,7 @@ website:
   navbar:
     title: "SHIH"
     search: true
-    # logo: assets/images/logo.svg
+    logo: assets/images/logo.png
     right:
       - text: About
         href: index.qmd
