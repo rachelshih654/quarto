@@ -1,0 +1,335 @@
+---
+title: "台灣人海外旅遊分析"
+description: "根據交通部觀光局統計資料，以國人出境數據係以飛航到達首站為統計原則，統計其間為 202211-202411。"
+date: "2025-01-17"
+html:
+  toc: true  # 目錄
+---
+
+- **報告背景**：  
+  本報告分析了台灣旅客至海外各目的地的旅遊數據，涵蓋性別、年齡層及時間（按年月）等資訊，旨在挖掘旅遊趨勢、熱門目的地及潛在的市場機會。
+  
+- **數據來源**：  
+```{python}
+#| echo: false
+#| output: true
+# 讀取資料
+import pandas as pd
+import plotly.graph_objects as go
+import plotly.express as px
+final_df = pd.read_csv("normalized.csv")
+from IPython.display import HTML, Markdown, display
+
+# YYYYMM 轉換成 日期格式:YYYY-MM
+final_df["YYYYMM"] = pd.to_datetime(final_df["YYYYMM"], format="%Y%m")  # 修正格式
+# final_df["YYYYMM"] = final_df["YYYYMM"].dt.strftime("%Y/%m")  # 格式化為 YYYY/MM
+
+HTML('  本數據來交通部觀光局的統計，包含 {:,.0f} 筆數據，涵蓋年份、月份、目的地、年齡群體與性別分佈。'.format(final_df.shape[0]))
+```
+
+
+- **報告目標**：
+  - 確定旅遊目的地的趨勢與季節性。
+  - 分析年齡層與性別的偏好。
+  - 識別熱門目的地與潛在市場。
+
+### **數據概述**
+
+- **數據範圍**：
+
+```{python}
+#| echo: false
+#| output: true
+data_overview = {
+    "指標": ["時間範圍", "涵蓋的目的地", "年齡群體", "性別"],
+    "數值": [
+        f"{final_df['YYYYMM'].min().strftime('%Y年%m月')} ~ {final_df['YYYYMM'].max().strftime('%Y年%m月')}",
+        final_df['RESIDENCE_CH'].nunique(),
+        final_df['AGEGROUP'].nunique(),
+        "男、女"
+    ],
+    "範例資料": [
+        '',
+        (final_df['REGION_CH'] + '_' + final_df['RESIDENCE_CH']).unique()[0:5],
+        final_df['AGEGROUP'].unique()[0:5],
+        ''
+    ]
+}
+
+# 範例資料轉成字串
+data_overview["範例資料"] = [', '.join(x) for x in data_overview["範例資料"]]
+
+overview_df = pd.DataFrame(data_overview)
+
+# 顯示表格
+Markdown(overview_df.to_markdown(index=False))
+```
+
+<br>
+
+- **數據摘要**：
+
+```{python}
+#| echo: false
+#| output: true
+
+hot_region = final_df.groupby("REGION_CH")["COUNT"].sum().idxmax()
+cold_region = final_df.groupby("REGION_CH")["COUNT"].sum().idxmin()
+hot_destinations = final_df.groupby("RESIDENCE_CH")["COUNT"].sum().idxmax()
+hot_agegroup = final_df.groupby("AGEGROUP")["COUNT"].sum().idxmax()
+
+summary_data = {
+    "指標": ["總旅遊次數", "最熱門地區", "最冷門地區", "最熱門目的地", "最熱門年齡群體"],
+    "數值": [
+        '{:,.0f}人次'.format(final_df["COUNT"].sum()),  # 總旅遊次數
+        hot_region,
+        cold_region,
+        hot_destinations,
+        hot_agegroup
+    ]
+}
+summary_df = pd.DataFrame(summary_data)
+
+Markdown(summary_df.to_markdown(index=False))
+```
+
+<br>
+
+- **最新年度旅遊指標**
+
+```{python}
+#| echo: false
+#| output: true
+# 最新年度
+max_year = final_df["YYY"].max()
+max_year_df = final_df[final_df["YYY"] == max_year]
+max_year_sum = max_year_df["COUNT"].sum()
+
+# 期別
+max_year_period = final_df[final_df["YYY"] == max_year]["MM"].unique()
+
+# 去年同期
+last_year = max_year-1
+last_year_sum = final_df[(final_df["YYY"] == last_year) & (final_df["MM"].isin(max_year_period))]["COUNT"].sum()
+
+# 計算年增率
+year_growth_rate = ((max_year_sum - last_year_sum) / last_year_sum) * 100
+
+# 顯示數據
+max_year_data = {
+    "指標": ["總旅遊次數", "最熱門地區", "最熱門目的地", "最熱門年齡群體", "與前一年同期比較"],
+    "數值": [
+        '{:,.0f}人次'.format(max_year_sum),  # 總旅遊次數
+        max_year_df.groupby("REGION_CH")["COUNT"].sum().idxmax(),
+        max_year_df.groupby("RESIDENCE_CH")["COUNT"].sum().idxmax(),
+        max_year_df.groupby("AGEGROUP")["COUNT"].sum().idxmax(),
+        '{:.2f}%'.format(year_growth_rate)
+    ]
+}
+max_year_sum = pd.DataFrame(max_year_data)
+print(f"{max_year_df['YYYYMM'].min().strftime('%Y年%m月')} ~ {max_year_df['YYYYMM'].max().strftime('%Y年%m月')} 累計人次")
+Markdown(max_year_sum.to_markdown(index=False))
+```
+
+<br>
+
+- **最新月份旅遊指標**
+
+```{python}
+#| echo: false
+#| output: true
+
+# 最新月份
+max_month = final_df["YYYYMM"].max()
+max_month_df = final_df[final_df["YYYYMM"] == max_month]
+max_month_sum = max_month_df["COUNT"].sum()
+
+# 去年同期
+last_year_month = max_month - pd.DateOffset(years=1)
+last_year_month_sum = final_df[final_df["YYYYMM"] == last_year_month]["COUNT"].sum()
+
+# 計算年增率
+year_growth_rate = ((max_month_sum - last_year_month_sum) / last_year_month_sum) * 100
+
+# 上月
+last_month = max_month - pd.DateOffset(months=1)
+last_month_sum = final_df[final_df["YYYYMM"] == last_month]["COUNT"].sum()
+
+# 計算月增率
+month_growth_rate = ((max_month_sum - last_month_sum) / last_month_sum) * 100
+
+# 顯示數據
+max_month_data = {
+    "指標": ["總旅遊次數", "最熱門地區", "最熱門目的地", "最熱門年齡群體", "與前一年同期比較", "與上月比較"],
+    "數值": [
+        '{:,.0f}人次'.format(max_month_sum),  # 總旅遊次數
+        max_month_df.groupby("REGION_CH")["COUNT"].sum().idxmax(),
+        max_month_df.groupby("RESIDENCE_CH")["COUNT"].sum().idxmax(),
+        max_month_df.groupby("AGEGROUP")["COUNT"].sum().idxmax(),
+        '{:.2f}%'.format(year_growth_rate),
+        '{:.2f}%'.format(month_growth_rate)
+    ]
+}
+max_month_sum = pd.DataFrame(max_month_data)
+print(f"{max_month.strftime('%Y年%m月')} 累計人次")
+Markdown(max_month_sum.to_markdown(index=False))
+```
+
+<br>
+---
+
+### **分析內容**
+
+#### **旅遊趨勢分析**
+
+```{python}
+#| echo: false
+#| output: true
+people_by_month = final_df.groupby(["YYYYMM"])["COUNT"].sum().reset_index()
+# 計算每月出國人數並除以1000
+people_by_month["COUNT_M"] = people_by_month["COUNT"] / 1000
+
+# 繪製圖表
+fig = go.Figure()
+
+# 添加數據
+fig.add_trace(go.Scatter(
+    x=people_by_month["YYYYMM"],
+    y=people_by_month["COUNT_M"],
+    mode='lines+markers',
+    name='出國人數',
+    line=dict(color='#5580A0', width=3),
+    marker=dict(size=6)
+))
+
+# 添加標題和標籤
+fig.update_layout(
+    title="每月出國人數趨勢圖",
+    xaxis_title="年月",
+    yaxis_title="出國人數 (千人)",
+    yaxis_tickformat=",",  # 使用逗號作為千位分隔符
+    template='plotly_dark',  # 使用黑色背景樣式
+    width=650,
+    height=300
+)
+
+# 顯示圖表
+fig.show()
+```
+
+<br>
+
+#### 各地區出國人數
+
+```{python}
+#| echo: false
+#| output: true
+# 圓餅圖
+people_by_region = final_df.groupby(["RESIDENCE_CH"])["COUNT"].sum().reset_index()
+
+# 繪製圖表
+fig = px.pie(people_by_region, values='COUNT', names='RESIDENCE_CH', color_discrete_sequence=px.colors.sequential.RdBu)
+
+# 添加下拉選單
+fig.update_layout(
+    updatemenus=[
+        {
+            'buttons': [
+                {
+                    'label': '所有',
+                    'method': 'update',
+                    'args': [{'values': [final_df.groupby("RESIDENCE_CH")["COUNT"].sum()]},
+                              {'title': '各地區出國人數比例 - 所有'}]
+                }
+            ] + [
+                {
+                    'label': str(year),
+                    'method': 'update',
+                    'args': [{'values': [final_df[final_df['YYY'] == year].groupby("RESIDENCE_CH")["COUNT"].sum()]},
+                              {'title': f'各地區出國人數比例 - {year}年'}]
+                } for year in final_df['YYY'].unique()
+            ],
+            'direction': 'down',
+            'showactive': True,
+        }
+    ]
+)
+
+# 修改標籤名稱，只顯示地區名稱
+fig.update_traces(textinfo='label+percent'
+                , hoverinfo='value'
+                , hovertemplate='%{label}<br>人數 : %{value}'   # 顯示地區名稱和百分比
+                , textfont=dict(size=10)  # 調整文字大小
+                , textposition='inside'  # 將文本顯示在餅圖內部
+                )  
+fig.update_layout(title="各地區出國人數比例",
+    template='plotly_dark',
+    width=650,
+    height=300,
+    showlegend=False,  # 隱藏圖例
+    margin=dict(l=0, r=0, t=40, b=0)  # 調整邊距以增加餅圖大小
+    )
+fig.show()
+```
+
+<br>
+
+```{python}
+#| echo: false
+#| output: true
+# 折線圖
+people_by_month_region = final_df.groupby(["YYYYMM", "RESIDENCE_CH"])["COUNT"].sum().reset_index()
+
+# 繪製圖表
+fig = px.line(people_by_month_region, x="YYYYMM", y="COUNT", color="RESIDENCE_CH", template="plotly_dark", symbol="RESIDENCE_CH")
+
+fig.update_layout(
+    title="各地區出國人數趨勢圖",
+    xaxis_title="年月",
+    yaxis_title="出國人數",
+    yaxis_tickformat=",",  # 使用逗號作為千位分隔符
+    legend_title="地區",
+    width=650,
+    height=300
+)
+
+# 更新 hovertemplate
+
+# 使用資料集中的實際欄位名稱更新 hovertemplate
+fig.update_traces(
+    hovertemplate="地區: %{fullData.name}<br>日期: %{x}<br>人數: %{y:,}<extra></extra>"
+)
+fig.show()
+```
+
+<br>
+
+
+```{python}
+#| echo: false
+#| output: true
+from raceplotly.plots import barplot
+
+# 資料
+people_by_year_region = final_df.groupby(["YYYYMM","RESIDENCE_CH"])["COUNT"].sum().reset_index()
+
+
+# 增加一個欄位，各地區的累計值
+people_by_year_region["COUNT_C"] = people_by_year_region.groupby("RESIDENCE_CH")["COUNT"].cumsum()
+
+# 格式化為 YYYY-MM
+
+people_by_year_region["YYYYMM"] = people_by_year_region["YYYYMM"].dt.strftime("%Y-%m")  
+
+my_raceplot = barplot(people_by_year_region,
+                      item_column='RESIDENCE_CH',
+                      value_column='COUNT_C',
+                      time_column='YYYYMM')
+
+my_raceplot.plot(title = '各地區出國人數趨勢圖',
+                 item_label = '地區',
+                 value_label = '出國人數',
+                 frame_duration = 600,
+                )
+```
+

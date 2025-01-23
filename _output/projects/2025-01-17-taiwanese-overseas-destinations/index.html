@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Rachel SHIH">
+<meta name="description" content="根據交通部觀光局統計資料，以國人出境數據係以飛航到達首站為統計原則，統計其間為 202211-202411。">
+
+<title>台灣人海外旅遊分析 – SHIH</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../..//assets/images/logo.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-e25cc82807363e79c52e96bc8b7855f1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-032a9e69169bdaa0800d875de9ccd853.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+<script type="text/javascript">
+
+window.PlotlyConfig = {MathJaxConfig: 'local'};
+
+if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+
+if (typeof require !== 'undefined') {
+
+require.undef("plotly");
+
+requirejs.config({
+
+    paths: {
+
+        'plotly': ['https://cdn.plot.ly/plotly-2.35.2.min']
+
+    }
+
+});
+
+require(['plotly'], function(Plotly) {
+
+    window._Plotly = Plotly;
+
+});
+
+}
+
+</script>
+
+
+
+
+
+<meta property="og:title" content="台灣人海外旅遊分析 – SHIH">
+<meta property="og:description" content="根據交通部觀光局統計資料，以國人出境數據係以飛航到達首站為統計原則，統計其間為 202211-202411。">
+<meta property="og:site_name" content="SHIH">
+<meta name="twitter:title" content="台灣人海外旅遊分析 – SHIH">
+<meta name="twitter:description" content="根據交通部觀光局統計資料，以國人出境數據係以飛航到達首站為統計原則，統計其間為 202211-202411。">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/images/logo.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">SHIH</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">台灣人海外旅遊分析</h1>
+                  <div>
+        <div class="description">
+          根據交通部觀光局統計資料，以國人出境數據係以飛航到達首站為統計原則，統計其間為 202211-202411。
+        </div>
+      </div>
+                </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Rachel SHIH </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">Friday, the 17th of January, 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#數據概述" id="toc-數據概述" class="nav-link active" data-scroll-target="#數據概述"><strong>數據概述</strong></a></li>
+  <li><a href="#分析內容" id="toc-分析內容" class="nav-link" data-scroll-target="#分析內容"><strong>分析內容</strong></a>
+  <ul>
+  <li><a href="#旅遊趨勢分析" id="toc-旅遊趨勢分析" class="nav-link" data-scroll-target="#旅遊趨勢分析"><strong>旅遊趨勢分析</strong></a></li>
+  <li><a href="#各地區出國人數" id="toc-各地區出國人數" class="nav-link" data-scroll-target="#各地區出國人數">各地區出國人數</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<ul>
+<li><p><strong>報告背景</strong>：<br>
+本報告分析了台灣旅客至海外各目的地的旅遊數據，涵蓋性別、年齡層及時間（按年月）等資訊，旨在挖掘旅遊趨勢、熱門目的地及潛在的市場機會。</p></li>
+<li><p><strong>數據來源</strong>：</p></li>
+</ul>
+<div id="3e85d4e3" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="33">
+  本數據來交通部觀光局的統計，包含 15,190 筆數據，涵蓋年份、月份、目的地、年齡群體與性別分佈。
+</div>
+</div>
+<ul>
+<li><strong>報告目標</strong>：
+<ul>
+<li>確定旅遊目的地的趨勢與季節性。</li>
+<li>分析年齡層與性別的偏好。</li>
+<li>識別熱門目的地與潛在市場。</li>
+</ul></li>
+</ul>
+<section id="數據概述" class="level3">
+<h3 class="anchored" data-anchor-id="數據概述"><strong>數據概述</strong></h3>
+<ul>
+<li><strong>數據範圍</strong>：</li>
+</ul>
+<div id="0c3c764d" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="34">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 20%">
+<col style="width: 67%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">指標</th>
+<th style="text-align: left;">數值</th>
+<th style="text-align: left;">類型</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">時間範圍</td>
+<td style="text-align: left;">2022年01月 ~ 2024年11月</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">涵蓋的目的地</td>
+<td style="text-align: left;">26</td>
+<td style="text-align: left;">亞洲地區_中國大陸, 亞洲地區_其他, 亞洲地區_新加坡, 亞洲地區_日本, 亞洲地區_泰國</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">年齡群體</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">1-12Years, 13-19Years, 20-29Years, 30-39Years, 40-49Years</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">性別</td>
+<td style="text-align: left;">男、女</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><br></p>
+<ul>
+<li><strong>數據摘要</strong>：</li>
+</ul>
+<div id="00e417e5" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="35">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">指標</th>
+<th style="text-align: left;">數值</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">總旅遊次數</td>
+<td style="text-align: left;">28,801,955人次</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">最熱門地區</td>
+<td style="text-align: left;">亞洲地區</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">最冷門地區</td>
+<td style="text-align: left;">非洲地區</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">最熱門目的地</td>
+<td style="text-align: left;">日本</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">最熱門年齡群體</td>
+<td style="text-align: left;">40-49Years</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><br></p>
+<ul>
+<li><strong>最新年度旅遊指標</strong></li>
+</ul>
+<div id="a5a2e1ab" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-stdout">
+<pre><code>2024年01月 ~ 2024年11月 累計人次</code></pre>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="36">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">指標</th>
+<th style="text-align: left;">數值</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">總旅遊次數</td>
+<td style="text-align: left;">15,523,300人次</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">最熱門地區</td>
+<td style="text-align: left;">亞洲地區</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">最熱門目的地</td>
+<td style="text-align: left;">日本</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">最熱門年齡群體</td>
+<td style="text-align: left;">40-49Years</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">與前一年同期比較</td>
+<td style="text-align: left;">44.55%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><br></p>
+<ul>
+<li><strong>最新月份旅遊指標</strong></li>
+</ul>
+<div id="a88b117b" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-stdout">
+<pre><code>2024年11月 累計人次</code></pre>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="37">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">指標</th>
+<th style="text-align: left;">數值</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">總旅遊次數</td>
+<td style="text-align: left;">1,360,810人次</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">最熱門地區</td>
+<td style="text-align: left;">亞洲地區</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">最熱門目的地</td>
+<td style="text-align: left;">日本</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">最熱門年齡群體</td>
+<td style="text-align: left;">60Years and Over</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">與前一年同期比較</td>
+<td style="text-align: left;">24.05%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">與上月比較</td>
+<td style="text-align: left;">-3.49%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><br></p>
+<hr>
+</section>
+<section id="分析內容" class="level3">
+<h3 class="anchored" data-anchor-id="分析內容"><strong>分析內容</strong></h3>
+<section id="旅遊趨勢分析" class="level4">
+<h4 class="anchored" data-anchor-id="旅遊趨勢分析"><strong>旅遊趨勢分析</strong></h4>
+<div id="24530121" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display">
+<div>                            <div id="8977fc13-7577-41e8-a470-abf6af001d84" class="plotly-graph-div" style="height:300px; width:650px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("8977fc13-7577-41e8-a470-abf6af001d84")) {                    Plotly.newPlot(                        "8977fc13-7577-41e8-a470-abf6af001d84",                        [{"line":{"color":"#5580A0","width":3},"marker":{"size":6},"mode":"lines+markers","name":"出國人數","x":["2022-01-01T00:00:00","2022-02-01T00:00:00","2022-03-01T00:00:00","2022-04-01T00:00:00","2022-05-01T00:00:00","2022-06-01T00:00:00","2022-07-01T00:00:00","2022-08-01T00:00:00","2022-09-01T00:00:00","2022-10-01T00:00:00","2022-11-01T00:00:00","2022-12-01T00:00:00","2023-01-01T00:00:00","2023-02-01T00:00:00","2023-03-01T00:00:00","2023-04-01T00:00:00","2023-05-01T00:00:00","2023-06-01T00:00:00","2023-07-01T00:00:00","2023-08-01T00:00:00","2023-09-01T00:00:00","2023-10-01T00:00:00","2023-11-01T00:00:00","2023-12-01T00:00:00","2024-01-01T00:00:00","2024-02-01T00:00:00","2024-03-01T00:00:00","2024-04-01T00:00:00","2024-05-01T00:00:00","2024-06-01T00:00:00","2024-07-01T00:00:00","2024-08-01T00:00:00","2024-09-01T00:00:00","2024-10-01T00:00:00","2024-11-01T00:00:00"],"y":[25.925,59.362,44.089,40.676,45.602,66.87,102.395,128.811,126.864,172.319,276.57,393.338,696.474,652.943,736.283,830.184,877.833,1131.234,1235.822,1182.468,1080.168,1218.643,1096.976,1056.806,1281.751,1389.474,1321.971,1347.523,1360.781,1566.852,1572.801,1547.087,1364.271,1409.979,1360.81],"type":"scatter"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"rgb(17,17,17)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#f2f5fa"},"error_y":{"color":"#f2f5fa"},"marker":{"line":{"color":"rgb(17,17,17)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#A2B1C6","gridcolor":"#506784","linecolor":"#506784","minorgridcolor":"#506784","startlinecolor":"#A2B1C6"},"baxis":{"endlinecolor":"#A2B1C6","gridcolor":"#506784","linecolor":"#506784","minorgridcolor":"#506784","startlinecolor":"#A2B1C6"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"line":{"color":"#283442"}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"marker":{"line":{"color":"#283442"}},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#506784"},"line":{"color":"rgb(17,17,17)"}},"header":{"fill":{"color":"#2a3f5f"},"line":{"color":"rgb(17,17,17)"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#f2f5fa","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#f2f5fa"},"geo":{"bgcolor":"rgb(17,17,17)","lakecolor":"rgb(17,17,17)","landcolor":"rgb(17,17,17)","showlakes":true,"showland":true,"subunitcolor":"#506784"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"dark"},"margin":{"b":0,"l":0,"r":0,"t":30},"paper_bgcolor":"rgb(17,17,17)","plot_bgcolor":"rgb(17,17,17)","polar":{"angularaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"bgcolor":"rgb(17,17,17)","radialaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"},"yaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"},"zaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"}},"shapedefaults":{"line":{"color":"#f2f5fa"}},"sliderdefaults":{"bgcolor":"#C8D4E3","bordercolor":"rgb(17,17,17)","borderwidth":1,"tickwidth":0},"ternary":{"aaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"baxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"bgcolor":"rgb(17,17,17)","caxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""}},"title":{"x":0.05},"updatemenudefaults":{"bgcolor":"#506784","borderwidth":0},"xaxis":{"automargin":true,"gridcolor":"#283442","linecolor":"#506784","ticks":"","title":{"standoff":15},"zerolinecolor":"#283442","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#283442","linecolor":"#506784","ticks":"","title":{"standoff":15},"zerolinecolor":"#283442","zerolinewidth":2}}},"yaxis":{"title":{"text":"出國人數 (千人)"},"tickformat":","},"title":{"text":"每月出國人數趨勢圖"},"xaxis":{"title":{"text":"年月"}},"width":650,"height":300},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('8977fc13-7577-41e8-a470-abf6af001d84');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+</div>
+<p><br></p>
+</section>
+<section id="各地區出國人數" class="level4">
+<h4 class="anchored" data-anchor-id="各地區出國人數">各地區出國人數</h4>
+<div id="92bfb74e" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display">
+<div>                            <div id="aa66c3e6-6df0-4c5d-8513-12069d5ed679" class="plotly-graph-div" style="height:300px; width:650px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("aa66c3e6-6df0-4c5d-8513-12069d5ed679")) {                    Plotly.newPlot(                        "aa66c3e6-6df0-4c5d-8513-12069d5ed679",                        [{"domain":{"x":[0.0,1.0],"y":[0.0,1.0]},"hovertemplate":"%{label}\u003cbr\u003e人數 : %{value}","labels":["中國大陸","其他","加拿大","埃及","德國","挪威","新加坡","日本","比利時","法國","泰國","澳洲","澳門","瑞典","瑞士","紐西蘭","美國","義大利","英國","荷蘭","菲律賓","西班牙","越南","韓國","香港","馬來西亞"],"legendgroup":"","name":"","showlegend":true,"values":[4470373,1133729,186634,361,176510,128,757494,10103047,171,123934,1915613,297357,732355,225,817,64211,1172369,109981,67684,74632,449109,920,2139698,2347883,1898145,578575],"type":"pie","textfont":{"size":10},"hoverinfo":"value","textinfo":"label+percent","textposition":"inside"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"rgb(17,17,17)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#f2f5fa"},"error_y":{"color":"#f2f5fa"},"marker":{"line":{"color":"rgb(17,17,17)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#A2B1C6","gridcolor":"#506784","linecolor":"#506784","minorgridcolor":"#506784","startlinecolor":"#A2B1C6"},"baxis":{"endlinecolor":"#A2B1C6","gridcolor":"#506784","linecolor":"#506784","minorgridcolor":"#506784","startlinecolor":"#A2B1C6"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"line":{"color":"#283442"}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"marker":{"line":{"color":"#283442"}},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#506784"},"line":{"color":"rgb(17,17,17)"}},"header":{"fill":{"color":"#2a3f5f"},"line":{"color":"rgb(17,17,17)"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#f2f5fa","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#f2f5fa"},"geo":{"bgcolor":"rgb(17,17,17)","lakecolor":"rgb(17,17,17)","landcolor":"rgb(17,17,17)","showlakes":true,"showland":true,"subunitcolor":"#506784"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"dark"},"margin":{"b":0,"l":0,"r":0,"t":30},"paper_bgcolor":"rgb(17,17,17)","plot_bgcolor":"rgb(17,17,17)","polar":{"angularaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"bgcolor":"rgb(17,17,17)","radialaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"},"yaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"},"zaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"}},"shapedefaults":{"line":{"color":"#f2f5fa"}},"sliderdefaults":{"bgcolor":"#C8D4E3","bordercolor":"rgb(17,17,17)","borderwidth":1,"tickwidth":0},"ternary":{"aaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"baxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"bgcolor":"rgb(17,17,17)","caxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""}},"title":{"x":0.05},"updatemenudefaults":{"bgcolor":"#506784","borderwidth":0},"xaxis":{"automargin":true,"gridcolor":"#283442","linecolor":"#506784","ticks":"","title":{"standoff":15},"zerolinecolor":"#283442","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#283442","linecolor":"#506784","ticks":"","title":{"standoff":15},"zerolinecolor":"#283442","zerolinewidth":2}}},"legend":{"tracegroupgap":0},"piecolorway":["rgb(103,0,31)","rgb(178,24,43)","rgb(214,96,77)","rgb(244,165,130)","rgb(253,219,199)","rgb(247,247,247)","rgb(209,229,240)","rgb(146,197,222)","rgb(67,147,195)","rgb(33,102,172)","rgb(5,48,97)"],"updatemenus":[{"buttons":[{"args":[{"values":[[4470373,1133729,186634,361,176510,128,757494,10103047,171,123934,1915613,297357,732355,225,817,64211,1172369,109981,67684,74632,449109,920,2139698,2347883,1898145,578575]]},{"title":"各地區出國人數比例 - 所有"}],"label":"所有","method":"update"},{"args":[{"values":[[165895,111271,34282,40,18068,14,78961,354219,56,12715,104892,27162,7556,71,205,6758,216084,3183,9759,8220,29027,228,133203,78318,52725,29909]]},{"title":"各地區出國人數比例 - 111年"}],"label":"111","method":"update"},{"args":[{"values":[[1761134,484956,77523,118,78972,101,316715,4225804,77,59613,777326,130276,275979,99,415,28597,465756,49904,29363,27185,208399,391,853859,954693,743443,245136]]},{"title":"各地區出國人數比例 - 112年"}],"label":"112","method":"update"},{"args":[{"values":[[2543344,537502,74829,203,79470,13,361818,5523024,38,51606,1033395,139919,448820,55,197,28856,490529,56894,28562,39227,211683,301,1152636,1314872,1101977,303530]]},{"title":"各地區出國人數比例 - 113年"}],"label":"113","method":"update"}],"direction":"down","showactive":true}],"margin":{"l":0,"r":0,"t":40,"b":0},"title":{"text":"各地區出國人數比例"},"width":650,"height":300,"showlegend":false},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('aa66c3e6-6df0-4c5d-8513-12069d5ed679');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+</div>
+<p><br></p>
+<div id="579925a8" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display">
+<div>                            <div id="1ec34985-b50c-414c-afad-02930034ceb2" class="plotly-graph-div" style="height:300px; width:650px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("1ec34985-b50c-414c-afad-02930034ceb2")) {                    Plotly.newPlot(                        "1ec34985-b50c-414c-afad-02930034ceb2",                        [{"hovertemplate":"地區: %{fullData.name}\u003cbr\u003e日期: %{x}\u003cbr\u003e人數: %{y:,}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"中國大陸","line":{"color":"#636efa","dash":"solid"},"marker":{"symbol":"circle"},"mode":"lines+markers","name":"中國大陸","orientation":"v","showlegend":true,"x":["2022-01-01T00:00:00","2022-02-01T00:00:00","2022-03-01T00:00:00","2022-04-01T00:00:00","2022-05-01T00:00:00","2022-06-01T00:00:00","2022-07-01T00:00:00","2022-08-01T00:00:00","2022-09-01T00:00:00","2022-10-01T00:00:00","2022-11-01T00:00:00","2022-12-01T00:00:00","2023-01-01T00:00:00","2023-02-01T00:00:00","2023-03-01T00:00:00","2023-04-01T00:00:00","2023-05-01T00:00:00","2023-06-01T00:00:00","2023-07-01T00:00:00","2023-08-01T00:00:00","2023-09-01T00:00:00","2023-10-01T00:00:00","2023-11-01T00:00:00","2023-12-01T00:00:00","2024-01-01T00:00:00","2024-02-01T00:00:00","2024-03-01T00:00:00","2024-04-01T00:00:00","2024-05-01T00:00:00","2024-06-01T00:00:00","2024-07-01T00:00:00","2024-08-01T00:00:00","2024-09-01T00:00:00","2024-10-01T00:00:00","2024-11-01T00:00:00"],"xaxis":"x","y":[5351,32425,14486,6546,5746,7370,12868,19063,17947,16837,14822,12434,27363,62727,68734,118483,147408,175122,205744,200681,165935,224016,192900,172021,184626,209059,217642,233630,254248,244485,241358,244155,223600,251975,238566],"yaxis":"y","type":"scatter"},{"hovertemplate":"地區: %{fullData.name}\u003cbr\u003e日期: %{x}\u003cbr\u003e人數: %{y:,}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"其他","line":{"color":"#EF553B","dash":"solid"},"marker":{"symbol":"diamond"},"mode":"lines+markers","name":"其他","orientation":"v","showlegend":true,"x":["2022-01-01T00:00:00","2022-02-01T00:00:00","2022-03-01T00:00:00","2022-04-01T00:00:00","2022-05-01T00:00:00","2022-06-01T00:00:00","2022-07-01T00:00:00","2022-08-01T00:00:00","2022-09-01T00:00:00","2022-10-01T00:00:00","2022-11-01T00:00:00","2022-12-01T00:00:00","2023-01-01T00:00:00","2023-02-01T00:00:00","2023-03-01T00:00:00","2023-04-01T00:00:00","2023-05-01T00:00:00","2023-06-01T00:00:00","2023-07-01T00:00:00","2023-08-01T00:00:00","2023-09-01T00:00:00","2023-10-01T00:00:00","2023-11-01T00:00:00","2023-12-01T00:00:00","2024-01-01T00:00:00","2024-02-01T00:00:00","2024-03-01T00:00:00","2024-04-01T00:00:00","2024-05-01T00:00:00","2024-06-01T00:00:00","2024-07-01T00:00:00","2024-08-01T00:00:00","2024-09-01T00:00:00","2024-10-01T00:00:00","2024-11-01T00:00:00"],"xaxis":"x","y":[2630,4108,4440,4334,5102,7995,11098,10739,13305,12324,15994,19202,34434,27993,34119,32363,38957,46185,45443,50994,54730,48319,38523,32896,37022,48037,44861,47267,49513,51547,49352,53491,54794,54698,46920],"yaxis":"y","type":"scatter"},{"hovertemplate":"地區: %{fullData.name}\u003cbr\u003e日期: %{x}\u003cbr\u003e人數: %{y:,}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"加拿大","line":{"color":"#00cc96","dash":"solid"},"marker":{"symbol":"square"},"mode":"lines+markers","name":"加拿大","orientation":"v","showlegend":true,"x":["2022-01-01T00:00:00","2022-02-01T00:00:00","2022-03-01T00:00:00","2022-04-01T00:00:00","2022-05-01T00:00:00","2022-06-01T00:00:00","2022-07-01T00:00:00","2022-08-01T00:00:00","2022-09-01T00:00:00","2022-10-01T00:00:00","2022-11-01T00:00:00","2022-12-01T00:00:00","2023-01-01T00:00:00","2023-02-01T00:00:00","2023-03-01T00:00:00","2023-04-01T00:00:00","2023-05-01T00:00:00","2023-06-01T00:00:00","2023-07-01T00:00:00","2023-08-01T00:00:00","2023-09-01T00:00:00","2023-10-01T00:00:00","2023-11-01T00:00:00","2023-12-01T00:00:00","2024-01-01T00:00:00","2024-02-01T00:00:00","2024-03-01T00:00:00","2024-04-01T00:00:00","2024-05-01T00:00:00","2024-06-01T00:00:00","2024-07-01T00:00:00","2024-08-01T00:00:00","2024-09-01T00:00:00","2024-10-01T00:00:00","2024-11-01T00:00:00"],"xaxis":"x","y":[643,553,967,1662,2077,3262,3346,5232,4294,3208,3819,5219,7078,4928,6508,6111,6538,8594,8757,7115,7748,5905,3901,4340,5540,5919,5744,6514,7968,9004,8428,7930,7196,6201,4385],"yaxis":"y","type":"scatter"},{"hovertemplate":"地區: %{fullData.name}\u003cbr\u003e日期: %{x}\u003cbr\u003e人數: %{y:,}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"埃及","line":{"color":"#ab63fa","dash":"solid"},"marker":{"symbol":"x"},"mode":"lines+markers","name":"埃及","orientation":"v","showlegend":true,"x":["2022-01-01T00:00:00","2022-02-01T00:00:00","2022-03-01T00:00:00","2022-04-01T00:00:00","2022-05-01T00:00:00","2022-06-01T00:00:00","2022-07-01T00:00:00","2022-08-01T00:00:00","2022-09-01T00:00:00","2022-10-01T00:00:00","2022-11-01T00:00:00","2022-12-01T00:00:00","2023-01-01T00:00:00","2023-02-01T00:00:00","2023-03-01T00:00:00","2023-04-01T00:00:00","2023-05-01T00:00:00","2023-06-01T00:00:00","2023-07-01T00:00:00","2023-08-01T00:00:00","2023-09-01T00:00:00","2023-10-01T00:00:00","2023-11-01T00:00:00","2023-12-01T00:00:00","2024-01-01T00:00:00","2024-02-01T00:00:00","2024-03-01T00:00:00","2024-04-01T00:00:00","2024-05-01T00:00:00","2024-06-01T00:00:00","2024-07-01T00:00:00","2024-08-01T00:00:00","2024-09-01T00:00:00","2024-10-01T00:00:00","2024-11-01T00:00:00"],"xaxis":"x","y":[1,1,1,0,1,0,1,5,5,7,6,12,17,4,13,4,7,5,10,4,24,13,7,10,22,11,61,27,22,16,1,3,14,11,15],"yaxis":"y","type":"scatter"},{"hovertemplate":"地區: %{fullData.name}\u003cbr\u003e日期: %{x}\u003cbr\u003e人數: %{y:,}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"德國","line":{"color":"#FFA15A","dash":"solid"},"marker":{"symbol":"cross"},"mode":"lines+markers","name":"德國","orientation":"v","showlegend":true,"x":["2022-01-01T00:00:00","2022-02-01T00:00:00","2022-03-01T00:00:00","2022-04-01T00:00:00","2022-05-01T00:00:00","2022-06-01T00:00:00","2022-07-01T00:00:00","2022-08-01T00:00:00","2022-09-01T00:00:00","2022-10-01T00:00:00","2022-11-01T00:00:00","2022-12-01T00:00:00","2023-01-01T00:00:00","2023-02-01T00:00:00","2023-03-01T00:00:00","2023-04-01T00:00:00","2023-05-01T00:00:00","2023-06-01T00:00:00","2023-07-01T00:00:00","2023-08-01T00:00:00","2023-09-01T00:00:00","2023-10-01T00:00:00","2023-11-01T00:00:00","2023-12-01T00:00:00","2024-01-01T00:00:00","2024-02-01T00:00:00","2024-03-01T00:00:00","2024-04-01T00:00:00","2024-05-01T00:00:00","2024-06-01T00:00:00","2024-07-01T00:00:00","2024-08-01T00:00:00","2024-09-01T00:00:00","2024-10-01T00:00:00","2024-11-01T00:00:00"],"xaxis":"x","y":[182,301,328,338,621,1090,1297,1656,2594,2531,4429,2701,5799,3883,6661,4706,7026,9203,7304,6477,8882,8309,6345,4377,5605,6223,6365,6944,7960,9189,7400,7382,9145,6834,6423],"yaxis":"y","type":"scatter"},{"hovertemplate":"地區: %{fullData.name}\u003cbr\u003e日期: %{x}\u003cbr\u003e人數: %{y:,}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"挪威","line":{"color":"#19d3f3","dash":"solid"},"marker":{"symbol":"circle"},"mode":"lines+markers","name":"挪威","orientation":"v","showlegend":true,"x":["2022-01-01T00:00:00","2022-02-01T00:00:00","2022-03-01T00:00:00","2022-04-01T00:00:00","2022-05-01T00:00:00","2022-06-01T00:00:00","2022-07-01T00:00:00","2022-08-01T00:00:00","2022-09-01T00:00:00","2022-10-01T00:00:00","2022-11-01T00:00:00","2022-12-01T00:00:00","2023-01-01T00:00:00","2023-02-01T00:00:00","2023-03-01T00:00:00","2023-04-01T00:00:00","2023-05-01T00:00:00","2023-06-01T00:00:00","2023-07-01T00:00:00","2023-08-01T00:00:00","2023-09-01T00:00:00","2023-10-01T00:00:00","2023-11-01T00:00:00","2023-12-01T00:00:00","2024-01-01T00:00:00","2024-02-01T00:00:00","2024-03-01T00:00:00","2024-04-01T00:00:00","2024-05-01T00:00:00","2024-06-01T00:00:00","2024-07-01T00:00:00","2024-08-01T00:00:00","2024-09-01T00:00:00","2024-10-01T00:00:00","2024-11-01T00:00:00"],"xaxis":"x","y":[3,1,0,1,0,0,0,5,1,2,0,1,22,0,4,5,0,18,14,4,16,11,5,2,1,2,0,0,0,1,1,2,3,0,3],"yaxis":"y","type":"scatter"},{"hovertemplate":"地區: %{fullData.name}\u003cbr\u003e日期: %{x}\u003cbr\u003e人數: %{y:,}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"新加坡","line":{"color":"#FF6692","dash":"solid"},"marker":{"symbol":"diamond"},"mode":"lines+markers","name":"新加坡","orientation":"v","showlegend":true,"x":["2022-01-01T00:00:00","2022-02-01T00:00:00","2022-03-01T00:00:00","2022-04-01T00:00:00","2022-05-01T00:00:00","2022-06-01T00:00:00","2022-07-01T00:00:00","2022-08-01T00:00:00","2022-09-01T00:00:00","2022-10-01T00:00:00","2022-11-01T00:00:00","2022-12-01T00:00:00","2023-01-01T00:00:00","2023-02-01T00:00:00","2023-03-01T00:00:00","2023-04-01T00:00:00","2023-05-01T00:00:00","2023-06-01T00:00:00","2023-07-01T00:00:00","2023-08-01T00:00:00","2023-09-01T00:00:00","2023-10-01T00:00:00","2023-11-01T00:00:00","2023-12-01T00:00:00","2024-01-01T00:00:00","2024-02-01T00:00:00","2024-03-01T00:00:00","2024-04-01T00:00:00","2024-05-01T00:00:00","2024-06-01T00:00:00","2024-07-01T00:00:00","2024-08-01T00:00:00","2024-09-01T00:00:00","2024-10-01T00:00:00","2024-11-01T00:00:00"],"xaxis":"x","y":[1977,2492,2554,2633,3129,4404,6966,7623,8235,10524,14164,14260,33712,24363,20401,22249,23951,29257,38547,34181,27102,28258,19573,15121,36607,43477,28903,28708,27975,34632,44797,37087,31428,27026,21178],"yaxis":"y","type":"scatter"},{"hovertemplate":"地區: %{fullData.name}\u003cbr\u003e日期: %{x}\u003cbr\u003e人數: %{y:,}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"日本","line":{"color":"#B6E880","dash":"solid"},"marker":{"symbol":"square"},"mode":"lines+markers","name":"日本","orientation":"v","showlegend":true,"x":["2022-01-01T00:00:00","2022-02-01T00:00:00","2022-03-01T00:00:00","2022-04-01T00:00:00","2022-05-01T00:00:00","2022-06-01T00:00:00","2022-07-01T00:00:00","2022-08-01T00:00:00","2022-09-01T00:00:00","2022-10-01T00:00:00","2022-11-01T00:00:00","2022-12-01T00:00:00","2023-01-01T00:00:00","2023-02-01T00:00:00","2023-03-01T00:00:00","2023-04-01T00:00:00","2023-05-01T00:00:00","2023-06-01T00:00:00","2023-07-01T00:00:00","2023-08-01T00:00:00","2023-09-01T00:00:00","2023-10-01T00:00:00","2023-11-01T00:00:00","2023-12-01T00:00:00","2024-01-01T00:00:00","2024-02-01T00:00:00","2024-03-01T00:00:00","2024-04-01T00:00:00","2024-05-01T00:00:00","2024-06-01T00:00:00","2024-07-01T00:00:00","2024-08-01T00:00:00","2024-09-01T00:00:00","2024-10-01T00:00:00","2024-11-01T00:00:00"],"xaxis":"x","y":[1378,1491,3703,3710,2831,4092,6339,8523,9052,36880,102455,173765,266999,251909,283242,293906,306471,390723,426115,403759,380740,423915,402161,395864,494657,503512,481705,457209,464763,574588,566497,553185,472231,471981,482696],"yaxis":"y","type":"scatter"},{"hovertemplate":"地區: %{fullData.name}\u003cbr\u003e日期: %{x}\u003cbr\u003e人數: %{y:,}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"比利時","line":{"color":"#FF97FF","dash":"solid"},"marker":{"symbol":"x"},"mode":"lines+markers","name":"比利時","orientation":"v","showlegend":true,"x":["2022-01-01T00:00:00","2022-02-01T00:00:00","2022-03-01T00:00:00","2022-04-01T00:00:00","2022-05-01T00:00:00","2022-06-01T00:00:00","2022-07-01T00:00:00","2022-08-01T00:00:00","2022-09-01T00:00:00","2022-10-01T00:00:00","2022-11-01T00:00:00","2022-12-01T00:00:00","2023-01-01T00:00:00","2023-02-01T00:00:00","2023-03-01T00:00:00","2023-04-01T00:00:00","2023-05-01T00:00:00","2023-06-01T00:00:00","2023-07-01T00:00:00","2023-08-01T00:00:00","2023-09-01T00:00:00","2023-10-01T00:00:00","2023-11-01T00:00:00","2023-12-01T00:00:00","2024-01-01T00:00:00","2024-02-01T00:00:00","2024-03-01T00:00:00","2024-04-01T00:00:00","2024-05-01T00:00:00","2024-06-01T00:00:00","2024-07-01T00:00:00","2024-08-01T00:00:00","2024-09-01T00:00:00","2024-10-01T00:00:00","2024-11-01T00:00:00"],"xaxis":"x","y":[4,5,0,3,0,2,6,11,20,4,0,1,17,3,1,3,0,15,9,11,12,2,3,1,4,2,7,0,2,4,6,1,6,1,5],"yaxis":"y","type":"scatter"},{"hovertemplate":"地區: %{fullData.name}\u003cbr\u003e日期: %{x}\u003cbr\u003e人數: %{y:,}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"法國","line":{"color":"#FECB52","dash":"solid"},"marker":{"symbol":"cross"},"mode":"lines+markers","name":"法國","orientation":"v","showlegend":true,"x":["2022-01-01T00:00:00","2022-02-01T00:00:00","2022-03-01T00:00:00","2022-04-01T00:00:00","2022-05-01T00:00:00","2022-06-01T00:00:00","2022-07-01T00:00:00","2022-08-01T00:00:00","2022-09-01T00:00:00","2022-10-01T00:00:00","2022-11-01T00:00:00","2022-12-01T00:00:00","2023-01-01T00:00:00","2023-02-01T00:00:00","2023-03-01T00:00:00","2023-04-01T00:00:00","2023-05-01T00:00:00","2023-06-01T00:00:00","2023-07-01T00:00:00","2023-08-01T00:00:00","2023-09-01T00:00:00","2023-10-01T00:00:00","2023-11-01T00:00:00","2023-12-01T00:00:00","2024-01-01T00:00:00","2024-02-01T00:00:00","2024-03-01T00:00:00","2024-04-01T00:00:00","2024-05-01T00:00:00","2024-06-01T00:00:00","2024-07-01T00:00:00","2024-08-01T00:00:00","2024-09-01T00:00:00","2024-10-01T00:00:00","2024-11-01T00:00:00"],"xaxis":"x","y":[166,168,193,154,522,480,572,1586,2037,2177,2215,2445,5224,3645,4991,4747,4989,6485,4964,4616,5879,5589,4706,3778,4469,4732,5265,4324,5120,5405,3682,3736,5233,5022,4618],"yaxis":"y","type":"scatter"},{"hovertemplate":"地區: %{fullData.name}\u003cbr\u003e日期: %{x}\u003cbr\u003e人數: %{y:,}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"泰國","line":{"color":"#636efa","dash":"solid"},"marker":{"symbol":"circle"},"mode":"lines+markers","name":"泰國","orientation":"v","showlegend":true,"x":["2022-01-01T00:00:00","2022-02-01T00:00:00","2022-03-01T00:00:00","2022-04-01T00:00:00","2022-05-01T00:00:00","2022-06-01T00:00:00","2022-07-01T00:00:00","2022-08-01T00:00:00","2022-09-01T00:00:00","2022-10-01T00:00:00","2022-11-01T00:00:00","2022-12-01T00:00:00","2023-01-01T00:00:00","2023-02-01T00:00:00","2023-03-01T00:00:00","2023-04-01T00:00:00","2023-05-01T00:00:00","2023-06-01T00:00:00","2023-07-01T00:00:00","2023-08-01T00:00:00","2023-09-01T00:00:00","2023-10-01T00:00:00","2023-11-01T00:00:00","2023-12-01T00:00:00","2024-01-01T00:00:00","2024-02-01T00:00:00","2024-03-01T00:00:00","2024-04-01T00:00:00","2024-05-01T00:00:00","2024-06-01T00:00:00","2024-07-01T00:00:00","2024-08-01T00:00:00","2024-09-01T00:00:00","2024-10-01T00:00:00","2024-11-01T00:00:00"],"xaxis":"x","y":[859,1370,1353,1429,1899,2783,6869,9238,10505,14439,22865,31283,56952,44915,49584,58832,54885,78863,74932,78705,69687,71389,67918,70664,85805,100069,89893,90222,81421,99412,101768,103010,89861,97612,94322],"yaxis":"y","type":"scatter"},{"hovertemplate":"地區: %{fullData.name}\u003cbr\u003e日期: %{x}\u003cbr\u003e人數: %{y:,}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"澳洲","line":{"color":"#EF553B","dash":"solid"},"marker":{"symbol":"diamond"},"mode":"lines+markers","name":"澳洲","orientation":"v","showlegend":true,"x":["2022-01-01T00:00:00","2022-02-01T00:00:00","2022-03-01T00:00:00","2022-04-01T00:00:00","2022-05-01T00:00:00","2022-06-01T00:00:00","2022-07-01T00:00:00","2022-08-01T00:00:00","2022-09-01T00:00:00","2022-10-01T00:00:00","2022-11-01T00:00:00","2022-12-01T00:00:00","2023-01-01T00:00:00","2023-02-01T00:00:00","2023-03-01T00:00:00","2023-04-01T00:00:00","2023-05-01T00:00:00","2023-06-01T00:00:00","2023-07-01T00:00:00","2023-08-01T00:00:00","2023-09-01T00:00:00","2023-10-01T00:00:00","2023-11-01T00:00:00","2023-12-01T00:00:00","2024-01-01T00:00:00","2024-02-01T00:00:00","2024-03-01T00:00:00","2024-04-01T00:00:00","2024-05-01T00:00:00","2024-06-01T00:00:00","2024-07-01T00:00:00","2024-08-01T00:00:00","2024-09-01T00:00:00","2024-10-01T00:00:00","2024-11-01T00:00:00"],"xaxis":"x","y":[529,946,901,906,983,1623,2418,2243,2660,3955,3937,6061,13280,11957,9335,9362,8889,11337,12956,11695,10305,11821,9960,9379,14411,17504,11080,11459,10130,13144,16377,13485,10780,11307,10242],"yaxis":"y","type":"scatter"},{"hovertemplate":"地區: %{fullData.name}\u003cbr\u003e日期: %{x}\u003cbr\u003e人數: %{y:,}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"澳門","line":{"color":"#00cc96","dash":"solid"},"marker":{"symbol":"square"},"mode":"lines+markers","name":"澳門","orientation":"v","showlegend":true,"x":["2022-01-01T00:00:00","2022-02-01T00:00:00","2022-03-01T00:00:00","2022-04-01T00:00:00","2022-05-01T00:00:00","2022-06-01T00:00:00","2022-07-01T00:00:00","2022-08-01T00:00:00","2022-09-01T00:00:00","2022-10-01T00:00:00","2022-11-01T00:00:00","2022-12-01T00:00:00","2023-01-01T00:00:00","2023-02-01T00:00:00","2023-03-01T00:00:00","2023-04-01T00:00:00","2023-05-01T00:00:00","2023-06-01T00:00:00","2023-07-01T00:00:00","2023-08-01T00:00:00","2023-09-01T00:00:00","2023-10-01T00:00:00","2023-11-01T00:00:00","2023-12-01T00:00:00","2024-01-01T00:00:00","2024-02-01T00:00:00","2024-03-01T00:00:00","2024-04-01T00:00:00","2024-05-01T00:00:00","2024-06-01T00:00:00","2024-07-01T00:00:00","2024-08-01T00:00:00","2024-09-01T00:00:00","2024-10-01T00:00:00","2024-11-01T00:00:00"],"xaxis":"x","y":[138,453,799,789,340,224,195,527,555,1002,1182,1352,6915,14125,13930,17058,16634,23651,33513,32878,27315,29715,29963,30282,33054,34722,34220,42402,43558,50234,43338,43461,40181,41579,42071],"yaxis":"y","type":"scatter"},{"hovertemplate":"地區: %{fullData.name}\u003cbr\u003e日期: %{x}\u003cbr\u003e人數: %{y:,}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"瑞典","line":{"color":"#ab63fa","dash":"solid"},"marker":{"symbol":"x"},"mode":"lines+markers","name":"瑞典","orientation":"v","showlegend":true,"x":["2022-01-01T00:00:00","2022-02-01T00:00:00","2022-03-01T00:00:00","2022-04-01T00:00:00","2022-05-01T00:00:00","2022-06-01T00:00:00","2022-07-01T00:00:00","2022-08-01T00:00:00","2022-09-01T00:00:00","2022-10-01T00:00:00","2022-11-01T00:00:00","2022-12-01T00:00:00","2023-01-01T00:00:00","2023-02-01T00:00:00","2023-03-01T00:00:00","2023-04-01T00:00:00","2023-05-01T00:00:00","2023-06-01T00:00:00","2023-07-01T00:00:00","2023-08-01T00:00:00","2023-09-01T00:00:00","2023-10-01T00:00:00","2023-11-01T00:00:00","2023-12-01T00:00:00","2024-01-01T00:00:00","2024-02-01T00:00:00","2024-03-01T00:00:00","2024-04-01T00:00:00","2024-05-01T00:00:00","2024-06-01T00:00:00","2024-07-01T00:00:00","2024-08-01T00:00:00","2024-09-01T00:00:00","2024-10-01T00:00:00","2024-11-01T00:00:00"],"xaxis":"x","y":[4,2,2,2,9,9,3,15,9,8,1,7,6,6,21,4,6,11,12,25,3,3,1,1,9,4,5,0,4,5,10,9,3,3,3],"yaxis":"y","type":"scatter"},{"hovertemplate":"地區: %{fullData.name}\u003cbr\u003e日期: %{x}\u003cbr\u003e人數: %{y:,}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"瑞士","line":{"color":"#FFA15A","dash":"solid"},"marker":{"symbol":"cross"},"mode":"lines+markers","name":"瑞士","orientation":"v","showlegend":true,"x":["2022-01-01T00:00:00","2022-02-01T00:00:00","2022-03-01T00:00:00","2022-04-01T00:00:00","2022-05-01T00:00:00","2022-06-01T00:00:00","2022-07-01T00:00:00","2022-08-01T00:00:00","2022-09-01T00:00:00","2022-10-01T00:00:00","2022-11-01T00:00:00","2022-12-01T00:00:00","2023-01-01T00:00:00","2023-02-01T00:00:00","2023-03-01T00:00:00","2023-04-01T00:00:00","2023-05-01T00:00:00","2023-06-01T00:00:00","2023-07-01T00:00:00","2023-08-01T00:00:00","2023-09-01T00:00:00","2023-10-01T00:00:00","2023-11-01T00:00:00","2023-12-01T00:00:00","2024-01-01T00:00:00","2024-02-01T00:00:00","2024-03-01T00:00:00","2024-04-01T00:00:00","2024-05-01T00:00:00","2024-06-01T00:00:00","2024-07-01T00:00:00","2024-08-01T00:00:00","2024-09-01T00:00:00","2024-10-01T00:00:00","2024-11-01T00:00:00"],"xaxis":"x","y":[6,10,7,4,10,29,30,27,37,26,3,16,22,7,12,10,29,72,65,83,48,39,16,12,29,13,3,16,23,29,32,26,13,9,4],"yaxis":"y","type":"scatter"},{"hovertemplate":"地區: %{fullData.name}\u003cbr\u003e日期: %{x}\u003cbr\u003e人數: %{y:,}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"紐西蘭","line":{"color":"#19d3f3","dash":"solid"},"marker":{"symbol":"circle"},"mode":"lines+markers","name":"紐西蘭","orientation":"v","showlegend":true,"x":["2022-01-01T00:00:00","2022-02-01T00:00:00","2022-03-01T00:00:00","2022-04-01T00:00:00","2022-05-01T00:00:00","2022-06-01T00:00:00","2022-07-01T00:00:00","2022-08-01T00:00:00","2022-09-01T00:00:00","2022-10-01T00:00:00","2022-11-01T00:00:00","2022-12-01T00:00:00","2023-01-01T00:00:00","2023-02-01T00:00:00","2023-03-01T00:00:00","2023-04-01T00:00:00","2023-05-01T00:00:00","2023-06-01T00:00:00","2023-07-01T00:00:00","2023-08-01T00:00:00","2023-09-01T00:00:00","2023-10-01T00:00:00","2023-11-01T00:00:00","2023-12-01T00:00:00","2024-01-01T00:00:00","2024-02-01T00:00:00","2024-03-01T00:00:00","2024-04-01T00:00:00","2024-05-01T00:00:00","2024-06-01T00:00:00","2024-07-01T00:00:00","2024-08-01T00:00:00","2024-09-01T00:00:00","2024-10-01T00:00:00","2024-11-01T00:00:00"],"xaxis":"x","y":[73,49,183,147,241,505,581,549,657,724,1152,1897,2186,2592,2075,2879,1625,1788,2509,2350,2522,2995,2690,2386,2483,3305,3272,2960,2610,2035,2869,2075,1533,2481,3233],"yaxis":"y","type":"scatter"},{"hovertemplate":"地區: %{fullData.name}\u003cbr\u003e日期: %{x}\u003cbr\u003e人數: %{y:,}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"美國","line":{"color":"#FF6692","dash":"solid"},"marker":{"symbol":"diamond"},"mode":"lines+markers","name":"美國","orientation":"v","showlegend":true,"x":["2022-01-01T00:00:00","2022-02-01T00:00:00","2022-03-01T00:00:00","2022-04-01T00:00:00","2022-05-01T00:00:00","2022-06-01T00:00:00","2022-07-01T00:00:00","2022-08-01T00:00:00","2022-09-01T00:00:00","2022-10-01T00:00:00","2022-11-01T00:00:00","2022-12-01T00:00:00","2023-01-01T00:00:00","2023-02-01T00:00:00","2023-03-01T00:00:00","2023-04-01T00:00:00","2023-05-01T00:00:00","2023-06-01T00:00:00","2023-07-01T00:00:00","2023-08-01T00:00:00","2023-09-01T00:00:00","2023-10-01T00:00:00","2023-11-01T00:00:00","2023-12-01T00:00:00","2024-01-01T00:00:00","2024-02-01T00:00:00","2024-03-01T00:00:00","2024-04-01T00:00:00","2024-05-01T00:00:00","2024-06-01T00:00:00","2024-07-01T00:00:00","2024-08-01T00:00:00","2024-09-01T00:00:00","2024-10-01T00:00:00","2024-11-01T00:00:00"],"xaxis":"x","y":[8089,6762,7961,8919,12150,17664,23135,30506,21550,21217,26004,32127,44305,26721,33376,32719,39739,47777,50241,45745,39653,36637,33936,34907,49440,41857,39261,40761,44988,50716,53854,52962,39470,38578,38642],"yaxis":"y","type":"scatter"},{"hovertemplate":"地區: %{fullData.name}\u003cbr\u003e日期: %{x}\u003cbr\u003e人數: %{y:,}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"義大利","line":{"color":"#B6E880","dash":"solid"},"marker":{"symbol":"square"},"mode":"lines+markers","name":"義大利","orientation":"v","showlegend":true,"x":["2022-01-01T00:00:00","2022-02-01T00:00:00","2022-03-01T00:00:00","2022-04-01T00:00:00","2022-05-01T00:00:00","2022-06-01T00:00:00","2022-07-01T00:00:00","2022-08-01T00:00:00","2022-09-01T00:00:00","2022-10-01T00:00:00","2022-11-01T00:00:00","2022-12-01T00:00:00","2023-01-01T00:00:00","2023-02-01T00:00:00","2023-03-01T00:00:00","2023-04-01T00:00:00","2023-05-01T00:00:00","2023-06-01T00:00:00","2023-07-01T00:00:00","2023-08-01T00:00:00","2023-09-01T00:00:00","2023-10-01T00:00:00","2023-11-01T00:00:00","2023-12-01T00:00:00","2024-01-01T00:00:00","2024-02-01T00:00:00","2024-03-01T00:00:00","2024-04-01T00:00:00","2024-05-01T00:00:00","2024-06-01T00:00:00","2024-07-01T00:00:00","2024-08-01T00:00:00","2024-09-01T00:00:00","2024-10-01T00:00:00","2024-11-01T00:00:00"],"xaxis":"x","y":[9,11,8,11,10,14,23,41,38,508,1441,1069,1672,1553,2699,3540,5017,6389,4840,4244,5679,6397,4777,3097,4039,4840,5671,5096,5968,6012,4368,4006,6070,6250,4574],"yaxis":"y","type":"scatter"},{"hovertemplate":"地區: %{fullData.name}\u003cbr\u003e日期: %{x}\u003cbr\u003e人數: %{y:,}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"英國","line":{"color":"#FF97FF","dash":"solid"},"marker":{"symbol":"x"},"mode":"lines+markers","name":"英國","orientation":"v","showlegend":true,"x":["2022-01-01T00:00:00","2022-02-01T00:00:00","2022-03-01T00:00:00","2022-04-01T00:00:00","2022-05-01T00:00:00","2022-06-01T00:00:00","2022-07-01T00:00:00","2022-08-01T00:00:00","2022-09-01T00:00:00","2022-10-01T00:00:00","2022-11-01T00:00:00","2022-12-01T00:00:00","2023-01-01T00:00:00","2023-02-01T00:00:00","2023-03-01T00:00:00","2023-04-01T00:00:00","2023-05-01T00:00:00","2023-06-01T00:00:00","2023-07-01T00:00:00","2023-08-01T00:00:00","2023-09-01T00:00:00","2023-10-01T00:00:00","2023-11-01T00:00:00","2023-12-01T00:00:00","2024-01-01T00:00:00","2024-02-01T00:00:00","2024-03-01T00:00:00","2024-04-01T00:00:00","2024-05-01T00:00:00","2024-06-01T00:00:00","2024-07-01T00:00:00","2024-08-01T00:00:00","2024-09-01T00:00:00","2024-10-01T00:00:00","2024-11-01T00:00:00"],"xaxis":"x","y":[205,198,286,397,469,858,804,1183,2383,951,737,1288,2160,1569,1861,2140,2340,2835,3420,3474,4018,2280,1388,1878,2490,2452,1991,2173,2211,3121,3552,3382,3361,2048,1781],"yaxis":"y","type":"scatter"},{"hovertemplate":"地區: %{fullData.name}\u003cbr\u003e日期: %{x}\u003cbr\u003e人數: %{y:,}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"荷蘭","line":{"color":"#FECB52","dash":"solid"},"marker":{"symbol":"cross"},"mode":"lines+markers","name":"荷蘭","orientation":"v","showlegend":true,"x":["2022-01-01T00:00:00","2022-02-01T00:00:00","2022-03-01T00:00:00","2022-04-01T00:00:00","2022-05-01T00:00:00","2022-06-01T00:00:00","2022-07-01T00:00:00","2022-08-01T00:00:00","2022-09-01T00:00:00","2022-10-01T00:00:00","2022-11-01T00:00:00","2022-12-01T00:00:00","2023-01-01T00:00:00","2023-02-01T00:00:00","2023-03-01T00:00:00","2023-04-01T00:00:00","2023-05-01T00:00:00","2023-06-01T00:00:00","2023-07-01T00:00:00","2023-08-01T00:00:00","2023-09-01T00:00:00","2023-10-01T00:00:00","2023-11-01T00:00:00","2023-12-01T00:00:00","2024-01-01T00:00:00","2024-02-01T00:00:00","2024-03-01T00:00:00","2024-04-01T00:00:00","2024-05-01T00:00:00","2024-06-01T00:00:00","2024-07-01T00:00:00","2024-08-01T00:00:00","2024-09-01T00:00:00","2024-10-01T00:00:00","2024-11-01T00:00:00"],"xaxis":"x","y":[72,176,209,231,352,399,767,1405,1716,1003,1037,853,2012,1133,1844,2445,1879,3046,2282,2635,3104,2513,2424,1868,2568,3215,3477,4467,3539,4580,3578,3571,4305,3162,2765],"yaxis":"y","type":"scatter"},{"hovertemplate":"地區: %{fullData.name}\u003cbr\u003e日期: %{x}\u003cbr\u003e人數: %{y:,}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"菲律賓","line":{"color":"#636efa","dash":"solid"},"marker":{"symbol":"circle"},"mode":"lines+markers","name":"菲律賓","orientation":"v","showlegend":true,"x":["2022-01-01T00:00:00","2022-02-01T00:00:00","2022-03-01T00:00:00","2022-04-01T00:00:00","2022-05-01T00:00:00","2022-06-01T00:00:00","2022-07-01T00:00:00","2022-08-01T00:00:00","2022-09-01T00:00:00","2022-10-01T00:00:00","2022-11-01T00:00:00","2022-12-01T00:00:00","2023-01-01T00:00:00","2023-02-01T00:00:00","2023-03-01T00:00:00","2023-04-01T00:00:00","2023-05-01T00:00:00","2023-06-01T00:00:00","2023-07-01T00:00:00","2023-08-01T00:00:00","2023-09-01T00:00:00","2023-10-01T00:00:00","2023-11-01T00:00:00","2023-12-01T00:00:00","2024-01-01T00:00:00","2024-02-01T00:00:00","2024-03-01T00:00:00","2024-04-01T00:00:00","2024-05-01T00:00:00","2024-06-01T00:00:00","2024-07-01T00:00:00","2024-08-01T00:00:00","2024-09-01T00:00:00","2024-10-01T00:00:00","2024-11-01T00:00:00"],"xaxis":"x","y":[242,397,546,1200,1123,1562,2593,3124,2619,3591,4733,7297,19159,13450,13861,14713,12681,21269,25678,20725,16550,19993,15545,14775,18150,25855,17185,22022,17487,22845,24290,20441,15265,14446,13697],"yaxis":"y","type":"scatter"},{"hovertemplate":"地區: %{fullData.name}\u003cbr\u003e日期: %{x}\u003cbr\u003e人數: %{y:,}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"西班牙","line":{"color":"#EF553B","dash":"solid"},"marker":{"symbol":"diamond"},"mode":"lines+markers","name":"西班牙","orientation":"v","showlegend":true,"x":["2022-01-01T00:00:00","2022-02-01T00:00:00","2022-03-01T00:00:00","2022-04-01T00:00:00","2022-05-01T00:00:00","2022-06-01T00:00:00","2022-07-01T00:00:00","2022-08-01T00:00:00","2022-09-01T00:00:00","2022-10-01T00:00:00","2022-11-01T00:00:00","2022-12-01T00:00:00","2023-01-01T00:00:00","2023-02-01T00:00:00","2023-03-01T00:00:00","2023-04-01T00:00:00","2023-05-01T00:00:00","2023-06-01T00:00:00","2023-07-01T00:00:00","2023-08-01T00:00:00","2023-09-01T00:00:00","2023-10-01T00:00:00","2023-11-01T00:00:00","2023-12-01T00:00:00","2024-01-01T00:00:00","2024-02-01T00:00:00","2024-03-01T00:00:00","2024-04-01T00:00:00","2024-05-01T00:00:00","2024-06-01T00:00:00","2024-07-01T00:00:00","2024-08-01T00:00:00","2024-09-01T00:00:00","2024-10-01T00:00:00","2024-11-01T00:00:00"],"xaxis":"x","y":[9,12,10,3,8,14,16,51,65,6,9,25,47,19,16,21,13,44,39,58,75,36,12,11,73,10,18,15,15,62,24,32,14,22,16],"yaxis":"y","type":"scatter"},{"hovertemplate":"地區: %{fullData.name}\u003cbr\u003e日期: %{x}\u003cbr\u003e人數: %{y:,}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"越南","line":{"color":"#00cc96","dash":"solid"},"marker":{"symbol":"square"},"mode":"lines+markers","name":"越南","orientation":"v","showlegend":true,"x":["2022-01-01T00:00:00","2022-02-01T00:00:00","2022-03-01T00:00:00","2022-04-01T00:00:00","2022-05-01T00:00:00","2022-06-01T00:00:00","2022-07-01T00:00:00","2022-08-01T00:00:00","2022-09-01T00:00:00","2022-10-01T00:00:00","2022-11-01T00:00:00","2022-12-01T00:00:00","2023-01-01T00:00:00","2023-02-01T00:00:00","2023-03-01T00:00:00","2023-04-01T00:00:00","2023-05-01T00:00:00","2023-06-01T00:00:00","2023-07-01T00:00:00","2023-08-01T00:00:00","2023-09-01T00:00:00","2023-10-01T00:00:00","2023-11-01T00:00:00","2023-12-01T00:00:00","2024-01-01T00:00:00","2024-02-01T00:00:00","2024-03-01T00:00:00","2024-04-01T00:00:00","2024-05-01T00:00:00","2024-06-01T00:00:00","2024-07-01T00:00:00","2024-08-01T00:00:00","2024-09-01T00:00:00","2024-10-01T00:00:00","2024-11-01T00:00:00"],"xaxis":"x","y":[1560,4601,3686,4526,4839,8326,15220,13647,12561,16085,20698,27454,54241,41121,49685,60534,62518,78941,85874,76784,75578,93811,84951,89821,88788,103828,106203,112567,102593,102453,113024,107477,99813,105432,110458],"yaxis":"y","type":"scatter"},{"hovertemplate":"地區: %{fullData.name}\u003cbr\u003e日期: %{x}\u003cbr\u003e人數: %{y:,}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"韓國","line":{"color":"#ab63fa","dash":"solid"},"marker":{"symbol":"x"},"mode":"lines+markers","name":"韓國","orientation":"v","showlegend":true,"x":["2022-01-01T00:00:00","2022-02-01T00:00:00","2022-03-01T00:00:00","2022-04-01T00:00:00","2022-05-01T00:00:00","2022-06-01T00:00:00","2022-07-01T00:00:00","2022-08-01T00:00:00","2022-09-01T00:00:00","2022-10-01T00:00:00","2022-11-01T00:00:00","2022-12-01T00:00:00","2023-01-01T00:00:00","2023-02-01T00:00:00","2023-03-01T00:00:00","2023-04-01T00:00:00","2023-05-01T00:00:00","2023-06-01T00:00:00","2023-07-01T00:00:00","2023-08-01T00:00:00","2023-09-01T00:00:00","2023-10-01T00:00:00","2023-11-01T00:00:00","2023-12-01T00:00:00","2024-01-01T00:00:00","2024-02-01T00:00:00","2024-03-01T00:00:00","2024-04-01T00:00:00","2024-05-01T00:00:00","2024-06-01T00:00:00","2024-07-01T00:00:00","2024-08-01T00:00:00","2024-09-01T00:00:00","2024-10-01T00:00:00","2024-11-01T00:00:00"],"xaxis":"x","y":[666,1339,824,851,1000,1453,2734,5240,5045,11301,18445,29420,52188,49440,65681,77069,66843,97953,100232,99127,88188,95571,84147,78254,92806,96674,110599,112553,114358,138090,136317,141487,126284,129325,116379],"yaxis":"y","type":"scatter"},{"hovertemplate":"地區: %{fullData.name}\u003cbr\u003e日期: %{x}\u003cbr\u003e人數: %{y:,}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"香港","line":{"color":"#FFA15A","dash":"solid"},"marker":{"symbol":"cross"},"mode":"lines+markers","name":"香港","orientation":"v","showlegend":true,"x":["2022-01-01T00:00:00","2022-02-01T00:00:00","2022-03-01T00:00:00","2022-04-01T00:00:00","2022-05-01T00:00:00","2022-06-01T00:00:00","2022-07-01T00:00:00","2022-08-01T00:00:00","2022-09-01T00:00:00","2022-10-01T00:00:00","2022-11-01T00:00:00","2022-12-01T00:00:00","2023-01-01T00:00:00","2023-02-01T00:00:00","2023-03-01T00:00:00","2023-04-01T00:00:00","2023-05-01T00:00:00","2023-06-01T00:00:00","2023-07-01T00:00:00","2023-08-01T00:00:00","2023-09-01T00:00:00","2023-10-01T00:00:00","2023-11-01T00:00:00","2023-12-01T00:00:00","2024-01-01T00:00:00","2024-02-01T00:00:00","2024-03-01T00:00:00","2024-04-01T00:00:00","2024-05-01T00:00:00","2024-06-01T00:00:00","2024-07-01T00:00:00","2024-08-01T00:00:00","2024-09-01T00:00:00","2024-10-01T00:00:00","2024-11-01T00:00:00"],"xaxis":"x","y":[872,1135,410,1219,1503,1698,2653,3940,3852,8280,11354,15809,43136,52780,53286,50513,51191,64397,72272,67644,63290,77257,71134,76543,92903,107369,85741,92537,91086,113477,107403,108197,97835,108889,96540],"yaxis":"y","type":"scatter"},{"hovertemplate":"地區: %{fullData.name}\u003cbr\u003e日期: %{x}\u003cbr\u003e人數: %{y:,}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"馬來西亞","line":{"color":"#19d3f3","dash":"solid"},"marker":{"symbol":"circle"},"mode":"lines+markers","name":"馬來西亞","orientation":"v","showlegend":true,"x":["2022-01-01T00:00:00","2022-02-01T00:00:00","2022-03-01T00:00:00","2022-04-01T00:00:00","2022-05-01T00:00:00","2022-06-01T00:00:00","2022-07-01T00:00:00","2022-08-01T00:00:00","2022-09-01T00:00:00","2022-10-01T00:00:00","2022-11-01T00:00:00","2022-12-01T00:00:00","2023-01-01T00:00:00","2023-02-01T00:00:00","2023-03-01T00:00:00","2023-04-01T00:00:00","2023-05-01T00:00:00","2023-06-01T00:00:00","2023-07-01T00:00:00","2023-08-01T00:00:00","2023-09-01T00:00:00","2023-10-01T00:00:00","2023-11-01T00:00:00","2023-12-01T00:00:00","2024-01-01T00:00:00","2024-02-01T00:00:00","2024-03-01T00:00:00","2024-04-01T00:00:00","2024-05-01T00:00:00","2024-06-01T00:00:00","2024-07-01T00:00:00","2024-08-01T00:00:00","2024-09-01T00:00:00","2024-10-01T00:00:00","2024-11-01T00:00:00"],"xaxis":"x","y":[257,356,232,661,637,1014,1861,2632,5122,4729,5068,7340,17528,12100,14343,15768,18197,27254,30050,28454,23085,23849,19990,14518,26150,26783,22799,23650,23219,31766,40475,36494,25833,25087,21274],"yaxis":"y","type":"scatter"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"rgb(17,17,17)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#f2f5fa"},"error_y":{"color":"#f2f5fa"},"marker":{"line":{"color":"rgb(17,17,17)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#A2B1C6","gridcolor":"#506784","linecolor":"#506784","minorgridcolor":"#506784","startlinecolor":"#A2B1C6"},"baxis":{"endlinecolor":"#A2B1C6","gridcolor":"#506784","linecolor":"#506784","minorgridcolor":"#506784","startlinecolor":"#A2B1C6"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"line":{"color":"#283442"}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"marker":{"line":{"color":"#283442"}},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#506784"},"line":{"color":"rgb(17,17,17)"}},"header":{"fill":{"color":"#2a3f5f"},"line":{"color":"rgb(17,17,17)"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#f2f5fa","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#f2f5fa"},"geo":{"bgcolor":"rgb(17,17,17)","lakecolor":"rgb(17,17,17)","landcolor":"rgb(17,17,17)","showlakes":true,"showland":true,"subunitcolor":"#506784"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"dark"},"margin":{"b":0,"l":0,"r":0,"t":30},"paper_bgcolor":"rgb(17,17,17)","plot_bgcolor":"rgb(17,17,17)","polar":{"angularaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"bgcolor":"rgb(17,17,17)","radialaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"},"yaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"},"zaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"}},"shapedefaults":{"line":{"color":"#f2f5fa"}},"sliderdefaults":{"bgcolor":"#C8D4E3","bordercolor":"rgb(17,17,17)","borderwidth":1,"tickwidth":0},"ternary":{"aaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"baxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"bgcolor":"rgb(17,17,17)","caxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""}},"title":{"x":0.05},"updatemenudefaults":{"bgcolor":"#506784","borderwidth":0},"xaxis":{"automargin":true,"gridcolor":"#283442","linecolor":"#506784","ticks":"","title":{"standoff":15},"zerolinecolor":"#283442","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#283442","linecolor":"#506784","ticks":"","title":{"standoff":15},"zerolinecolor":"#283442","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"年月"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"出國人數"},"tickformat":","},"legend":{"title":{"text":"地區"},"tracegroupgap":0},"title":{"text":"各地區出國人數趨勢圖"},"width":650,"height":300},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('1ec34985-b50c-414c-afad-02930034ceb2');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+</div>
+<p><br></p>
+<div id="534003b0" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display">
+<div>                            <div id="ab65639a-33c4-454d-bd15-87633d6333e5" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("ab65639a-33c4-454d-bd15-87633d6333e5")) {                    Plotly.newPlot(                        "ab65639a-33c4-454d-bd15-87633d6333e5",                        [{"cliponaxis":false,"hoverinfo":"all","marker":{"color":["rgb(242, 78, 56)","rgb(152, 234, 244)","rgb(227, 141, 98)","rgb(79, 243, 12)","rgb(159, 144, 101)","rgb(34, 234, 1)","rgb(74, 152, 78)","rgb(252, 218, 192)","rgb(28, 122, 132)","rgb(192, 189, 24)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[643,666,859,872,1378,1560,1977,2630,5351,8089],"y":["加拿大","韓國","泰國","香港","日本","越南","新加坡","其他","中國大陸","美國"],"type":"bar"}],                        {"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true,"title":{"text":"出國人數"},"showticklabels":true},"yaxis":{"showline":false,"visible":true,"title":{"text":"地區"},"showticklabels":false},"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"updatemenus":[{"buttons":[{"args":[null,{"frame":{"duration":600,"redraw":false},"fromcurrent":true,"transition":{"duration":600,"easing":"quadratic-in-out"}}],"label":"Play","method":"animate"},{"args":[[null],{"frame":{"duration":0,"redraw":false},"mode":"immediate","transition":{"duration":0}}],"label":"Pause","method":"animate"}],"direction":"left","pad":{"r":10,"t":87},"showactive":true,"type":"buttons","x":0.1,"xanchor":"right","y":0,"yanchor":"top"}],"sliders":[{"active":0,"currentvalue":{"font":{"size":20},"prefix":"Date: ","visible":true,"xanchor":"right"},"len":0.9,"pad":{"b":10,"t":50},"steps":[{"args":[["2022-01"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2022-01","method":"animate"},{"args":[["2022-02"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2022-02","method":"animate"},{"args":[["2022-03"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2022-03","method":"animate"},{"args":[["2022-04"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2022-04","method":"animate"},{"args":[["2022-05"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2022-05","method":"animate"},{"args":[["2022-06"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2022-06","method":"animate"},{"args":[["2022-07"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2022-07","method":"animate"},{"args":[["2022-08"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2022-08","method":"animate"},{"args":[["2022-09"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2022-09","method":"animate"},{"args":[["2022-10"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2022-10","method":"animate"},{"args":[["2022-11"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2022-11","method":"animate"},{"args":[["2022-12"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2022-12","method":"animate"},{"args":[["2023-01"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2023-01","method":"animate"},{"args":[["2023-02"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2023-02","method":"animate"},{"args":[["2023-03"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2023-03","method":"animate"},{"args":[["2023-04"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2023-04","method":"animate"},{"args":[["2023-05"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2023-05","method":"animate"},{"args":[["2023-06"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2023-06","method":"animate"},{"args":[["2023-07"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2023-07","method":"animate"},{"args":[["2023-08"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2023-08","method":"animate"},{"args":[["2023-09"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2023-09","method":"animate"},{"args":[["2023-10"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2023-10","method":"animate"},{"args":[["2023-11"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2023-11","method":"animate"},{"args":[["2023-12"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2023-12","method":"animate"},{"args":[["2024-01"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2024-01","method":"animate"},{"args":[["2024-02"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2024-02","method":"animate"},{"args":[["2024-03"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2024-03","method":"animate"},{"args":[["2024-04"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2024-04","method":"animate"},{"args":[["2024-05"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2024-05","method":"animate"},{"args":[["2024-06"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2024-06","method":"animate"},{"args":[["2024-07"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2024-07","method":"animate"},{"args":[["2024-08"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2024-08","method":"animate"},{"args":[["2024-09"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2024-09","method":"animate"},{"args":[["2024-10"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2024-10","method":"animate"},{"args":[["2024-11"],{"frame":{"duration":600,"redraw":false},"mode":"immediate","transition":{"duration":600}}],"label":"2024-11","method":"animate"}],"transition":{"duration":300,"easing":"cubic-in-out"},"x":0.1,"xanchor":"left","y":0,"yanchor":"top"}]},                        {"responsive": true}                    ).then(function(){
+                            Plotly.addFrames('ab65639a-33c4-454d-bd15-87633d6333e5', [{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(242, 78, 56)","rgb(152, 234, 244)","rgb(227, 141, 98)","rgb(79, 243, 12)","rgb(159, 144, 101)","rgb(34, 234, 1)","rgb(74, 152, 78)","rgb(252, 218, 192)","rgb(28, 122, 132)","rgb(192, 189, 24)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[643,666,859,872,1378,1560,1977,2630,5351,8089],"y":["加拿大","韓國","泰國","香港","日本","越南","新加坡","其他","中國大陸","美國"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2022-01"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(153, 176, 19)","rgb(152, 234, 244)","rgb(79, 243, 12)","rgb(227, 141, 98)","rgb(159, 144, 101)","rgb(74, 152, 78)","rgb(34, 234, 1)","rgb(252, 218, 192)","rgb(192, 189, 24)","rgb(28, 122, 132)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[1475,2005,2007,2229,2869,4469,6161,6738,14851,37776],"y":["澳洲","韓國","香港","泰國","日本","新加坡","越南","其他","美國","中國大陸"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2022-02"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(153, 176, 19)","rgb(79, 243, 12)","rgb(152, 234, 244)","rgb(227, 141, 98)","rgb(159, 144, 101)","rgb(74, 152, 78)","rgb(34, 234, 1)","rgb(252, 218, 192)","rgb(192, 189, 24)","rgb(28, 122, 132)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[2376,2417,2829,3582,6572,7023,9847,11178,22812,52262],"y":["澳洲","香港","韓國","泰國","日本","新加坡","越南","其他","美國","中國大陸"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2022-03"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(79, 243, 12)","rgb(152, 234, 244)","rgb(242, 78, 56)","rgb(227, 141, 98)","rgb(74, 152, 78)","rgb(159, 144, 101)","rgb(34, 234, 1)","rgb(252, 218, 192)","rgb(192, 189, 24)","rgb(28, 122, 132)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[3636,3680,3825,5011,9656,10282,14373,15512,31731,58808],"y":["香港","韓國","加拿大","泰國","新加坡","日本","越南","其他","美國","中國大陸"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2022-04"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(152, 234, 244)","rgb(79, 243, 12)","rgb(242, 78, 56)","rgb(227, 141, 98)","rgb(74, 152, 78)","rgb(159, 144, 101)","rgb(34, 234, 1)","rgb(252, 218, 192)","rgb(192, 189, 24)","rgb(28, 122, 132)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[4680,5139,5902,6910,12785,13113,19212,20614,43881,64554],"y":["韓國","香港","加拿大","泰國","新加坡","日本","越南","其他","美國","中國大陸"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2022-05"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(152, 234, 244)","rgb(79, 243, 12)","rgb(242, 78, 56)","rgb(227, 141, 98)","rgb(74, 152, 78)","rgb(159, 144, 101)","rgb(34, 234, 1)","rgb(252, 218, 192)","rgb(192, 189, 24)","rgb(28, 122, 132)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[6133,6837,9164,9693,17189,17205,27538,28609,61545,71924],"y":["韓國","香港","加拿大","泰國","新加坡","日本","越南","其他","美國","中國大陸"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2022-06"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(152, 234, 244)","rgb(79, 243, 12)","rgb(242, 78, 56)","rgb(227, 141, 98)","rgb(159, 144, 101)","rgb(74, 152, 78)","rgb(252, 218, 192)","rgb(34, 234, 1)","rgb(192, 189, 24)","rgb(28, 122, 132)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[8867,9490,12510,16562,23544,24155,39707,42758,84680,84792],"y":["韓國","香港","加拿大","泰國","日本","新加坡","其他","越南","美國","中國大陸"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2022-07"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(79, 243, 12)","rgb(152, 234, 244)","rgb(242, 78, 56)","rgb(227, 141, 98)","rgb(74, 152, 78)","rgb(159, 144, 101)","rgb(252, 218, 192)","rgb(34, 234, 1)","rgb(28, 122, 132)","rgb(192, 189, 24)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[13430,14107,17742,25800,31778,32067,50446,56405,103855,115186],"y":["香港","韓國","加拿大","泰國","新加坡","日本","其他","越南","中國大陸","美國"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2022-08"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(79, 243, 12)","rgb(152, 234, 244)","rgb(242, 78, 56)","rgb(227, 141, 98)","rgb(74, 152, 78)","rgb(159, 144, 101)","rgb(252, 218, 192)","rgb(34, 234, 1)","rgb(28, 122, 132)","rgb(192, 189, 24)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[17282,19152,22036,36305,40013,41119,63751,68966,121802,136736],"y":["香港","韓國","加拿大","泰國","新加坡","日本","其他","越南","中國大陸","美國"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2022-09"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(242, 78, 56)","rgb(79, 243, 12)","rgb(152, 234, 244)","rgb(74, 152, 78)","rgb(227, 141, 98)","rgb(252, 218, 192)","rgb(159, 144, 101)","rgb(34, 234, 1)","rgb(28, 122, 132)","rgb(192, 189, 24)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[25244,25562,30453,50537,50744,76075,77999,85051,138639,157953],"y":["加拿大","香港","韓國","新加坡","泰國","其他","日本","越南","中國大陸","美國"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2022-10"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(242, 78, 56)","rgb(79, 243, 12)","rgb(152, 234, 244)","rgb(74, 152, 78)","rgb(227, 141, 98)","rgb(252, 218, 192)","rgb(34, 234, 1)","rgb(28, 122, 132)","rgb(159, 144, 101)","rgb(192, 189, 24)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[29063,36916,48898,64701,73609,92069,105749,153461,180454,183957],"y":["加拿大","香港","韓國","新加坡","泰國","其他","越南","中國大陸","日本","美國"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2022-11"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(242, 78, 56)","rgb(79, 243, 12)","rgb(152, 234, 244)","rgb(74, 152, 78)","rgb(227, 141, 98)","rgb(252, 218, 192)","rgb(34, 234, 1)","rgb(28, 122, 132)","rgb(192, 189, 24)","rgb(159, 144, 101)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[34282,52725,78318,78961,104892,111271,133203,165895,216084,354219],"y":["加拿大","香港","韓國","新加坡","泰國","其他","越南","中國大陸","美國","日本"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2022-12"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(140, 51, 128)","rgb(79, 243, 12)","rgb(74, 152, 78)","rgb(152, 234, 244)","rgb(252, 218, 192)","rgb(227, 141, 98)","rgb(34, 234, 1)","rgb(28, 122, 132)","rgb(192, 189, 24)","rgb(159, 144, 101)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[48186,95861,112673,130506,145705,161844,187444,193258,260389,621218],"y":["菲律賓","香港","新加坡","韓國","其他","泰國","越南","中國大陸","美國","日本"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2023-01"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(140, 51, 128)","rgb(74, 152, 78)","rgb(79, 243, 12)","rgb(252, 218, 192)","rgb(152, 234, 244)","rgb(227, 141, 98)","rgb(34, 234, 1)","rgb(28, 122, 132)","rgb(192, 189, 24)","rgb(159, 144, 101)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[61636,137036,148641,173698,179946,206759,228565,255985,287110,873127],"y":["菲律賓","新加坡","香港","其他","韓國","泰國","越南","中國大陸","美國","日本"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2023-02"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(140, 51, 128)","rgb(74, 152, 78)","rgb(79, 243, 12)","rgb(252, 218, 192)","rgb(152, 234, 244)","rgb(227, 141, 98)","rgb(34, 234, 1)","rgb(192, 189, 24)","rgb(28, 122, 132)","rgb(159, 144, 101)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[75497,157437,201927,207817,245627,256343,278250,320486,324719,1156369],"y":["菲律賓","新加坡","香港","其他","韓國","泰國","越南","美國","中國大陸","日本"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2023-03"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(140, 51, 128)","rgb(74, 152, 78)","rgb(252, 218, 192)","rgb(79, 243, 12)","rgb(227, 141, 98)","rgb(152, 234, 244)","rgb(34, 234, 1)","rgb(192, 189, 24)","rgb(28, 122, 132)","rgb(159, 144, 101)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[90210,179686,240180,252440,315175,322696,338784,353205,443202,1450275],"y":["菲律賓","新加坡","其他","香港","泰國","韓國","越南","美國","中國大陸","日本"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2023-04"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(129, 24, 41)","rgb(74, 152, 78)","rgb(252, 218, 192)","rgb(79, 243, 12)","rgb(227, 141, 98)","rgb(152, 234, 244)","rgb(192, 189, 24)","rgb(34, 234, 1)","rgb(28, 122, 132)","rgb(159, 144, 101)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[107845,203637,279137,303631,370060,389539,392944,401302,590610,1756746],"y":["馬來西亞","新加坡","其他","香港","泰國","韓國","美國","越南","中國大陸","日本"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2023-05"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(129, 24, 41)","rgb(74, 152, 78)","rgb(252, 218, 192)","rgb(79, 243, 12)","rgb(192, 189, 24)","rgb(227, 141, 98)","rgb(34, 234, 1)","rgb(152, 234, 244)","rgb(28, 122, 132)","rgb(159, 144, 101)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[135099,232894,325322,368028,440721,448923,480243,487492,765732,2147469],"y":["馬來西亞","新加坡","其他","香港","美國","泰國","越南","韓國","中國大陸","日本"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2023-06"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(129, 24, 41)","rgb(74, 152, 78)","rgb(252, 218, 192)","rgb(79, 243, 12)","rgb(192, 189, 24)","rgb(227, 141, 98)","rgb(34, 234, 1)","rgb(152, 234, 244)","rgb(28, 122, 132)","rgb(159, 144, 101)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[165149,271441,370765,440300,490962,523855,566117,587724,971476,2573584],"y":["馬來西亞","新加坡","其他","香港","美國","泰國","越南","韓國","中國大陸","日本"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2023-07"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(129, 24, 41)","rgb(74, 152, 78)","rgb(252, 218, 192)","rgb(79, 243, 12)","rgb(192, 189, 24)","rgb(227, 141, 98)","rgb(34, 234, 1)","rgb(152, 234, 244)","rgb(28, 122, 132)","rgb(159, 144, 101)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[193603,305622,421759,507944,536707,602560,642901,686851,1172157,2977343],"y":["馬來西亞","新加坡","其他","香港","美國","泰國","越南","韓國","中國大陸","日本"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2023-08"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(129, 24, 41)","rgb(74, 152, 78)","rgb(252, 218, 192)","rgb(79, 243, 12)","rgb(192, 189, 24)","rgb(227, 141, 98)","rgb(34, 234, 1)","rgb(152, 234, 244)","rgb(28, 122, 132)","rgb(159, 144, 101)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[216688,332724,476489,571234,576360,672247,718479,775039,1338092,3358083],"y":["馬來西亞","新加坡","其他","香港","美國","泰國","越南","韓國","中國大陸","日本"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2023-09"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(129, 24, 41)","rgb(74, 152, 78)","rgb(252, 218, 192)","rgb(192, 189, 24)","rgb(79, 243, 12)","rgb(227, 141, 98)","rgb(34, 234, 1)","rgb(152, 234, 244)","rgb(28, 122, 132)","rgb(159, 144, 101)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[240537,360982,524808,612997,648491,743636,812290,870610,1562108,3781998],"y":["馬來西亞","新加坡","其他","美國","香港","泰國","越南","韓國","中國大陸","日本"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2023-10"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(129, 24, 41)","rgb(74, 152, 78)","rgb(252, 218, 192)","rgb(192, 189, 24)","rgb(79, 243, 12)","rgb(227, 141, 98)","rgb(34, 234, 1)","rgb(152, 234, 244)","rgb(28, 122, 132)","rgb(159, 144, 101)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[260527,380555,563331,646933,719625,811554,897241,954757,1755008,4184159],"y":["馬來西亞","新加坡","其他","美國","香港","泰國","越南","韓國","中國大陸","日本"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2023-11"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(32, 19, 204)","rgb(74, 152, 78)","rgb(252, 218, 192)","rgb(192, 189, 24)","rgb(79, 243, 12)","rgb(227, 141, 98)","rgb(34, 234, 1)","rgb(152, 234, 244)","rgb(28, 122, 132)","rgb(159, 144, 101)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[283535,395676,596227,681840,796168,882218,987062,1033011,1927029,4580023],"y":["澳門","新加坡","其他","美國","香港","泰國","越南","韓國","中國大陸","日本"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2023-12"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(32, 19, 204)","rgb(74, 152, 78)","rgb(252, 218, 192)","rgb(192, 189, 24)","rgb(79, 243, 12)","rgb(227, 141, 98)","rgb(34, 234, 1)","rgb(152, 234, 244)","rgb(28, 122, 132)","rgb(159, 144, 101)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[316589,432283,633249,731280,889071,968023,1075850,1125817,2111655,5074680],"y":["澳門","新加坡","其他","美國","香港","泰國","越南","韓國","中國大陸","日本"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2024-01"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(32, 19, 204)","rgb(74, 152, 78)","rgb(252, 218, 192)","rgb(192, 189, 24)","rgb(79, 243, 12)","rgb(227, 141, 98)","rgb(34, 234, 1)","rgb(152, 234, 244)","rgb(28, 122, 132)","rgb(159, 144, 101)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[351311,475760,681286,773137,996440,1068092,1179678,1222491,2320714,5578192],"y":["澳門","新加坡","其他","美國","香港","泰國","越南","韓國","中國大陸","日本"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2024-02"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(32, 19, 204)","rgb(74, 152, 78)","rgb(252, 218, 192)","rgb(192, 189, 24)","rgb(79, 243, 12)","rgb(227, 141, 98)","rgb(34, 234, 1)","rgb(152, 234, 244)","rgb(28, 122, 132)","rgb(159, 144, 101)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[385531,504663,726147,812398,1082181,1157985,1285881,1333090,2538356,6059897],"y":["澳門","新加坡","其他","美國","香港","泰國","越南","韓國","中國大陸","日本"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2024-03"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(32, 19, 204)","rgb(74, 152, 78)","rgb(252, 218, 192)","rgb(192, 189, 24)","rgb(79, 243, 12)","rgb(227, 141, 98)","rgb(34, 234, 1)","rgb(152, 234, 244)","rgb(28, 122, 132)","rgb(159, 144, 101)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[427933,533371,773414,853159,1174718,1248207,1398448,1445643,2771986,6517106],"y":["澳門","新加坡","其他","美國","香港","泰國","越南","韓國","中國大陸","日本"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2024-04"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(32, 19, 204)","rgb(74, 152, 78)","rgb(252, 218, 192)","rgb(192, 189, 24)","rgb(79, 243, 12)","rgb(227, 141, 98)","rgb(34, 234, 1)","rgb(152, 234, 244)","rgb(28, 122, 132)","rgb(159, 144, 101)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[471491,561346,822927,898147,1265804,1329628,1501041,1560001,3026234,6981869],"y":["澳門","新加坡","其他","美國","香港","泰國","越南","韓國","中國大陸","日本"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2024-05"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(32, 19, 204)","rgb(74, 152, 78)","rgb(252, 218, 192)","rgb(192, 189, 24)","rgb(79, 243, 12)","rgb(227, 141, 98)","rgb(34, 234, 1)","rgb(152, 234, 244)","rgb(28, 122, 132)","rgb(159, 144, 101)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[521725,595978,874474,948863,1379281,1429040,1603494,1698091,3270719,7556457],"y":["澳門","新加坡","其他","美國","香港","泰國","越南","韓國","中國大陸","日本"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2024-06"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(32, 19, 204)","rgb(74, 152, 78)","rgb(252, 218, 192)","rgb(192, 189, 24)","rgb(79, 243, 12)","rgb(227, 141, 98)","rgb(34, 234, 1)","rgb(152, 234, 244)","rgb(28, 122, 132)","rgb(159, 144, 101)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[565063,640775,923826,1002717,1486684,1530808,1716518,1834408,3512077,8122954],"y":["澳門","新加坡","其他","美國","香港","泰國","越南","韓國","中國大陸","日本"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2024-07"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(32, 19, 204)","rgb(74, 152, 78)","rgb(252, 218, 192)","rgb(192, 189, 24)","rgb(79, 243, 12)","rgb(227, 141, 98)","rgb(34, 234, 1)","rgb(152, 234, 244)","rgb(28, 122, 132)","rgb(159, 144, 101)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[608524,677862,977317,1055679,1594881,1633818,1823995,1975895,3756232,8676139],"y":["澳門","新加坡","其他","美國","香港","泰國","越南","韓國","中國大陸","日本"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2024-08"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(32, 19, 204)","rgb(74, 152, 78)","rgb(252, 218, 192)","rgb(192, 189, 24)","rgb(79, 243, 12)","rgb(227, 141, 98)","rgb(34, 234, 1)","rgb(152, 234, 244)","rgb(28, 122, 132)","rgb(159, 144, 101)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[648705,709290,1032111,1095149,1692716,1723679,1923808,2102179,3979832,9148370],"y":["澳門","新加坡","其他","美國","香港","泰國","越南","韓國","中國大陸","日本"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2024-09"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(32, 19, 204)","rgb(74, 152, 78)","rgb(252, 218, 192)","rgb(192, 189, 24)","rgb(79, 243, 12)","rgb(227, 141, 98)","rgb(34, 234, 1)","rgb(152, 234, 244)","rgb(28, 122, 132)","rgb(159, 144, 101)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[690284,736316,1086809,1133727,1801605,1821291,2029240,2231504,4231807,9620351],"y":["澳門","新加坡","其他","美國","香港","泰國","越南","韓國","中國大陸","日本"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2024-10"},{"data":[{"cliponaxis":false,"hoverinfo":"all","hovertemplate":"\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["rgb(32, 19, 204)","rgb(74, 152, 78)","rgb(252, 218, 192)","rgb(192, 189, 24)","rgb(79, 243, 12)","rgb(227, 141, 98)","rgb(34, 234, 1)","rgb(152, 234, 244)","rgb(28, 122, 132)","rgb(159, 144, 101)"]},"orientation":"h","textangle":0,"textposition":"outside","texttemplate":"%{y}\u003cbr\u003e%{x:.4s}","x":[732355,757494,1133729,1172369,1898145,1915613,2139698,2347883,4470373,10103047],"y":["澳門","新加坡","其他","美國","香港","泰國","越南","韓國","中國大陸","日本"],"type":"bar"}],"layout":{"bargap":0.15,"font":{"size":14},"plot_bgcolor":"#FFFFFF","title":{"text":"各地區出國人數趨勢圖"},"xaxis":{"range":[0,10103047],"showline":true,"visible":true},"yaxis":{"showline":false,"visible":true}},"name":"2024-11"}]);
+                        }).then(function(){
+                            
+var gd = document.getElementById('ab65639a-33c4-454d-bd15-87633d6333e5');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/rachelshih654\.github\.io\/quarto\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Powered by <a href="https://quarto.org">Quarto</a>.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>© <span id="current-year"></span> Rachel SHIH.</p>
+</div>
+  </div>
+</footer>
+<script type="text/javascript">
+  const dateElements = document.querySelectorAll("p.date, div.listing-date, div.listing-file-modified");
+  dateElements.forEach((el) => {
+    el.innerHTML = el.innerHTML.replace(
+      /(\d+)(st|nd|rd|th)/g,
+      "$1<sup style='font-size:0.5em;font-style:italic;'>$2</sup>"
+    );
+  });
+</script>
+<script>
+  document.getElementById('current-year').textContent = new Date().getFullYear();
+</script>
+
+
+
+
+</body></html>
