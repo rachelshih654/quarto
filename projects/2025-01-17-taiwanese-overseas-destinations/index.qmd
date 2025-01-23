@@ -182,6 +182,8 @@ Markdown(max_month_sum.to_markdown(index=False))
 
 #### **旅遊趨勢分析**
 
+- **整體旅遊量走勢**：  
+
 ```{python}
 #| echo: false
 #| output: true
@@ -219,7 +221,33 @@ fig.show()
 
 <br>
 
-#### 各地區出國人數
+匯總所有目的地的總旅遊量，檢查其是否具有明顯的季節性變化。
+
+```{python}
+#| echo: false
+#| output: true
+people_by_month = final_df.groupby(["YYYY","MM"])["COUNT"].sum().reset_index()
+
+# 繪製圖表
+fig = go.Figure()
+
+# 年度當作是不同類別，月份是X軸，繪製折線圖
+fig = px.line(people_by_month, x="MM", y="COUNT", color="YYYY", template="plotly_dark", symbol="YYYY", markers=True)
+
+# 添加標題和標籤
+fig.update_layout(title="每月出國人數趨勢圖", xaxis_title="月份", yaxis_title="出國人數",legend_title="年份", yaxis_tickformat=",", template='plotly_dark', width=650, height=300)
+
+fig.update_traces(
+    hovertemplate="年月: %{fullData.name} 年 %{x} 月<br>人數: %{y:,}<extra></extra>"
+)
+
+# 顯示圖表
+fig.show()
+```
+
+<br>
+
+- **目的地旅遊量趨勢**：  
 
 ```{python}
 #| echo: false
@@ -294,8 +322,6 @@ fig.update_layout(
 )
 
 # 更新 hovertemplate
-
-# 使用資料集中的實際欄位名稱更新 hovertemplate
 fig.update_traces(
     hovertemplate="地區: %{fullData.name}<br>日期: %{x}<br>人數: %{y:,}<extra></extra>"
 )
@@ -304,6 +330,19 @@ fig.show()
 
 <br>
 
+#### **年齡與性別分佈**
+
+交叉分析年齡與性別的旅遊量，檢查是否存在差異。
+
+- **年齡分佈**：  
+
+- **性別分佈**：  
+通過圓餅圖，觀察男性與女性旅遊人數的比例差異，顯示出某些目的地更受特定性別青睞。
+
+#### **目的地分析**
+
+- **熱門目的地排行**：  
+  通過長條圖顯示最熱門的前10大目的地，並分析其成因。 
 
 ```{python}
 #| echo: false
@@ -312,7 +351,6 @@ from raceplotly.plots import barplot
 
 # 資料
 people_by_year_region = final_df.groupby(["YYYYMM","RESIDENCE_CH"])["COUNT"].sum().reset_index()
-
 
 # 增加一個欄位，各地區的累計值
 people_by_year_region["COUNT_C"] = people_by_year_region.groupby("RESIDENCE_CH")["COUNT"].cumsum()
@@ -333,3 +371,4 @@ my_raceplot.plot(title = '各地區出國人數趨勢圖',
                 )
 ```
 
+### **結論與建議**
